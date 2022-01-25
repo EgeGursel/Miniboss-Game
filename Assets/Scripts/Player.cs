@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    // WEAPON & ANIMATIONS
+    // WEAPON & ANIMATIONS & SCENE MANAGEMENT
+    public GameObject sceneLoader;
     public GameObject weapon;
     public ParticleSystem dust;
     public Animator playerAnimator;
@@ -48,6 +50,11 @@ public class Player : MonoBehaviour
         {
             Attack();
         }
+
+        if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            TakeDamage(30);
+        }
     }
     void FixedUpdate()
     {
@@ -77,6 +84,15 @@ public class Player : MonoBehaviour
     {
         currentHealth -= damage;
         healthbar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+    void Die()
+    {
+        sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
     }
 }
 
