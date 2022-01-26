@@ -20,15 +20,17 @@ public class Player : MonoBehaviour
 
     // MOVEMENT
     public CharacterController2D controller;
-    public float runSpeed = 40f;
+    public float runSpeed = 26f;
     float horizontalMove = 0f;
     bool jump = false;
 
     // ATTACK
     public Transform attackArea;
-    public float attackRange = 0.85f;
+    public float attackRange = 0.55f;
     public LayerMask enemyLayer;
     public int attackDamage = 30;
+    public float attackCooldown = 0.4f;
+    private bool cooldown = true;
 
     private void Start()
     {
@@ -68,21 +70,38 @@ public class Player : MonoBehaviour
     }
     void Attack()
     {
-        // DETECT ENEMIES IN RANGE OF ATTACK
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
-
-        // DAMAGE ENEMIES
-        foreach (Collider2D enemy in hitEnemies)
+        if (cooldown)
         {
-            enemy.GetComponent<Enemy>().Damage(attackDamage);
+            // DETECT ENEMIES IN RANGE OF ATTACK
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
+
+            // DAMAGE ENEMIES
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                try
+                {
+                    enemy.GetComponent<Enemy>().Damage(attackDamage);
+                }
+                catch
+                {
+                    enemy.GetComponent<Boss>().Damage(attackDamage);
+                }
+            }
+            weaponAnimator.SetTrigger("Attack");
+            CameraShake.Instance.Shake(2f, .16f);
+
+            StartCoroutine(CooldownCoroutine());
+            return;
         }
-        weaponAnimator.SetTrigger("Attack");
-        CameraShake.Instance.Shake(2f, .16f);
-        return;
+        else
+        {
+            Debug.Log("on cooldown");
+        }
     }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        playerAnimator.SetTrigger("Damaged");
         healthbar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -93,6 +112,13 @@ public class Player : MonoBehaviour
     void Die()
     {
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
+    }
+
+    IEnumerator CooldownCoroutine()
+    {
+        cooldown = false;
+        yield return new WaitForSeconds(attackCooldown);
+        cooldown = true;
     }
 }
 

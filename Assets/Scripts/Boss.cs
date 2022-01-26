@@ -4,23 +4,22 @@ using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-	Enemy enemy;
-	/* HEALTH
-	public int bossMaxHealth = 100;
-	public int bossCurrentHealth;
-	public HealthBar bossHealthBar;
-	*/
+	// HEALTH
+	public int maxHealth = 500;
+	public int currentHealth;
+	public BossHealthBar bossHealthbar;
 
-	// ANIMATIONS
+	// ANIMATIONS & SCENE MANAGEMENT
 	public Transform player;
 	public Animator bossAnimator;
     public bool isFlipped = true;
-    private void Start()
+	public GameObject sceneLoader;
+
+	private void Start()
     {
-		enemy = GetComponent<Enemy>();
 		bossAnimator.SetTrigger("Moving");
-		// bossCurrentHealth = bossMaxHealth;
-		// bossHealthBar.SetMaxHealth(bossCurrentHealth);
+		currentHealth = maxHealth;
+		bossHealthbar.SetMaxHealth(currentHealth);
 	}
     public void LookAtPlayer()
 	{
@@ -39,5 +38,25 @@ public class Boss : MonoBehaviour
 			transform.Rotate(0f, 180f, 0f);
 			isFlipped = true;
 		}
+	}
+	public void Damage(int damage)
+	{
+		currentHealth -= damage;
+		bossHealthbar.SetHealth(currentHealth);
+
+		if (currentHealth <= 0)
+		{
+			Die();
+		}
+	}
+	public void Die()
+	{
+		gameObject.SetActive(false);
+		sceneLoader.GetComponent<SceneLoader>().Load("DeathScene 1");
+	}
+
+	public void AttackShakeCamera()
+    {
+		CameraShake.Instance.Shake(3f, .4f);
 	}
 }

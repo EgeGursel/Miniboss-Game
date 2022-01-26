@@ -5,23 +5,15 @@ using UnityEngine.UI;
 
 public class BossHealthBar : MonoBehaviour
 {
-    Enemy enemy;
     public Slider slider;
-    private void Start()
+    public void SetMaxHealth(int health)
     {
-        enemy = GetComponent<Enemy>();
+        slider.maxValue = health;
+        slider.value = health;
     }
-    public void SetBossMaxHealth(int bossHealth)
+    public void SetHealth(int health)
     {
-        slider.maxValue = enemy.maxHealth;
-        slider.value = enemy.currentHealth;
-    }
-    public void SetHealth(int bossHealth)
-    {
-        slider.value = enemy.currentHealth;
-        if (slider.value <= 0)
-        {
-            Destroy(gameObject);
-        }
+        slider.value = health;
     }
 }
+
