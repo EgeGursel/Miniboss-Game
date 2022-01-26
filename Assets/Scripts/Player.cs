@@ -93,10 +93,6 @@ public class Player : MonoBehaviour
             StartCoroutine(CooldownCoroutine());
             return;
         }
-        else
-        {
-            Debug.Log("on cooldown");
-        }
     }
     public void TakeDamage(int damage)
     {

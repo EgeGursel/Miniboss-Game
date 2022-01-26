@@ -483,7 +483,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'YOU WON!
 
-    MOGUS IS DEFEATED'
+    TROLLGUS IS DEFEATED'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}
   m_sharedMaterial: {fileID: -3899907182789827394, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}
@@ -510,8 +510,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 28
-  m_fontSizeBase: 28
+  m_fontSize: 26
+  m_fontSizeBase: 26
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
