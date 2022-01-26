@@ -1,16 +1,19 @@
 fileFormatVersion: 2
-guid: 30c81f2f78613874f95006e8ae413266
+guid: 7113c0cb5772d8b41af4f27549038e26
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8842477588274098405
-    second: slashanimation_0
+      213: 8411834820731649928
+    second: mogusboss-walk-1_0
   - first:
-      213: 2300355739129180174
-    second: slashanimation_1
+      213: -2586093043256573593
+    second: mogusboss-walk-1_1
   - first:
-      213: -5315447272251210552
-    second: slashanimation_2
+      213: -5235289314080985221
+    second: mogusboss-walk-1_2
+  - first:
+      213: -1379018751581668809
+    second: mogusboss-walk-1_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -112,7 +115,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: slashanimation_0
+      name: mogusboss-walk-1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -126,14 +129,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e03e6f548ac6ba70800000000000000
-      internalID: 8842477588274098405
+      spriteID: 88fb8fe9337dcb470800000000000000
+      internalID: 8411834820731649928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slashanimation_1
+      name: mogusboss-walk-1_1
       rect:
         serializedVersion: 2
         x: 32
@@ -147,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e0073df5b518cef10800000000000000
-      internalID: 2300355739129180174
+      spriteID: 7614590341a5c1cd0800000000000000
+      internalID: -2586093043256573593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: slashanimation_2
+      name: mogusboss-walk-1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -168,8 +171,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c4c52b4edcbb36b0800000000000000
-      internalID: -5315447272251210552
+      spriteID: b7fedc94b148857b0800000000000000
+      internalID: -5235289314080985221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: mogusboss-walk-1_3
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73a3f5570cdbcdce0800000000000000
+      internalID: -1379018751581668809
       vertices: []
       indices: 
       edges: []

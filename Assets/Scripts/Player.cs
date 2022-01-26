@@ -26,7 +26,7 @@ public class Player : MonoBehaviour
 
     // ATTACK
     public Transform attackArea;
-    public float attackRange = 1.05f;
+    public float attackRange = 0.85f;
     public LayerMask enemyLayer;
     public int attackDamage = 30;
 
