@@ -10,6 +10,7 @@ public class Boss : MonoBehaviour
 	public BossHealthBar bossHealthbar;
 
 	// ANIMATIONS & SCENE MANAGEMENT
+	public ParticleSystem lightParticles;
 	public Transform player;
 	public Animator bossAnimator;
     public bool isFlipped = true;
@@ -17,9 +18,9 @@ public class Boss : MonoBehaviour
 
 	private void Start()
     {
-		bossAnimator.SetTrigger("Moving");
 		currentHealth = maxHealth;
 		bossHealthbar.SetMaxHealth(currentHealth);
+		StartCoroutine(StartBossAnim());
 	}
     public void LookAtPlayer()
 	{
@@ -58,5 +59,18 @@ public class Boss : MonoBehaviour
 	public void AttackShakeCamera()
     {
 		CameraShake.Instance.Shake(3f, .4f);
+	}
+
+	IEnumerator StartBossAnim()
+    {
+		GlowParticles();
+		CameraShake.Instance.Shake(3f, 2.4f);
+		yield return new WaitForSeconds(3f);
+		bossAnimator.SetTrigger("Moving");
+	}
+
+	public void GlowParticles()
+    {
+		lightParticles.Play();
 	}
 }

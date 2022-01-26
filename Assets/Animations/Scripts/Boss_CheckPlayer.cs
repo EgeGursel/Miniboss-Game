@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Boss_Idle : StateMachineBehaviour
+public class Boss_CheckPlayer : StateMachineBehaviour
 {
     private float distanceToPlayer;
     private Transform player;
@@ -17,8 +17,8 @@ public class Boss_Idle : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        distanceToPlayer = Mathf.Abs((Vector2.Distance(player.position, rb.position)));
-        if (distanceToPlayer > 1.95f)
+        distanceToPlayer = (Vector2.Distance(player.position, rb.position));
+        if (distanceToPlayer >= 1.9f)
         {
             animator.SetTrigger("Moving");
         }

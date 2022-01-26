@@ -52,11 +52,6 @@ public class Player : MonoBehaviour
         {
             Attack();
         }
-
-        if (Input.GetKeyDown(KeyCode.Mouse1))
-        {
-            TakeDamage(30);
-        }
     }
     void FixedUpdate()
     {
