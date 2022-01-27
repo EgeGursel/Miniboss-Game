@@ -483,7 +483,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'YOU WON!
 
-    TROLLGUS IS DEFEATED'
+    TROLLGUS IS DEFEATED!'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}
   m_sharedMaterial: {fileID: -3899907182789827394, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}

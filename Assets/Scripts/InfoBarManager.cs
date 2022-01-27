@@ -24,10 +24,8 @@ public class InfoBarManager : MonoBehaviour
 
     public void SendInfoBar(string varText)
     {
-        gameObject.SetActive(true);
         infoBarText2.text = varText;
         StartCoroutine(BarWait());
-        gameObject.SetActive(false);
     }
 
     public IEnumerator BarWait()
@@ -35,5 +33,6 @@ public class InfoBarManager : MonoBehaviour
         yield return new WaitForSeconds(3f);
         infoBarAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
     }
 }

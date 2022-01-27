@@ -19,6 +19,7 @@ public class Boss : MonoBehaviour
 	private void Start()
     {
 		currentHealth = maxHealth;
+		bossHealthbar.gameObject.SetActive(true);
 		bossHealthbar.SetMaxHealth(currentHealth);
 		StartCoroutine(StartBossAnim());
 	}
@@ -52,13 +53,19 @@ public class Boss : MonoBehaviour
 	}
 	public void Die()
 	{
+		StartCoroutine(AfterDeath());
 		gameObject.SetActive(false);
-		sceneLoader.GetComponent<SceneLoader>().Load("DeathScene 1");
 	}
 
 	public void AttackShakeCamera()
     {
 		CameraShake.Instance.Shake(3f, .4f);
+	}
+
+	IEnumerator AfterDeath()
+    {
+		// ADD DEATH ANIMATION & DESTROY BOSS HERE INSTEAD OF Die()
+		yield return new WaitForSeconds(0);
 	}
 
 	IEnumerator StartBossAnim()

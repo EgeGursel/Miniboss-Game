@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class Player : MonoBehaviour
 {
     // WEAPON & ITEMS & ANIMATIONS & SCENE & INFO BAR MANAGEMENT
-    string collectableName;
+    public GameObject infoBar;
+    public GameObject boss;
     public GameObject sceneLoader;
     public GameObject weapon;
     public ParticleSystem dust;
     public Animator playerAnimator;
     public Animator weaponAnimator;
-    
 
     // HEALTH
     public int maxHealth = 100;
@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public int attackDamage = 30;
     public float attackCooldown = 0.4f;
     private bool cooldown = true;
+    private bool weaponActive;
 
     private void Start()
     {
@@ -50,7 +51,7 @@ public class Player : MonoBehaviour
             jump = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && weaponActive)
         {
             Attack();
         }
@@ -86,9 +87,7 @@ public class Player : MonoBehaviour
             }
             weaponAnimator.SetTrigger("Attack");
             CameraShake.Instance.Shake(2f, .16f);
-
             StartCoroutine(CooldownCoroutine());
-            return;
         }
     }
     public void TakeDamage(int damage)
@@ -120,21 +119,24 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        collectableName = collision.gameObject.name;
+        string collectableName = collision.gameObject.name;
 
-        foreach (Transform child in transform.GetChild(0))
+        foreach (Transform child in transform)
         {
             if (collectableName == child.name)
             {
                 child.gameObject.SetActive(true);
+                weaponActive = true;
             }
             else
             {
                 child.gameObject.SetActive(false);
             }
         }
+        infoBar.SetActive(true);
         Destroy(collision.gameObject);
         InfoBarManager.instance.SendInfoBar(collectableName);
+        boss.SetActive(true);
     }
 }
 
