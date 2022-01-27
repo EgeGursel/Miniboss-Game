@@ -6,12 +6,14 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    // WEAPON & ANIMATIONS & SCENE MANAGEMENT
+    // WEAPON & ITEMS & ANIMATIONS & SCENE & INFO BAR MANAGEMENT
+    string collectableName;
     public GameObject sceneLoader;
     public GameObject weapon;
     public ParticleSystem dust;
     public Animator playerAnimator;
     public Animator weaponAnimator;
+    
 
     // HEALTH
     public int maxHealth = 100;
@@ -111,5 +113,29 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         cooldown = true;
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (!collision.CompareTag("Collectable"))
+        {
+            return;
+        }
+        collectableName = collision.gameObject.name;
+
+        foreach (Transform child in transform.GetChild(0))
+        {
+            if (collectableName == child.name)
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+        Destroy(collision.gameObject);
+        InfoBarManager.instance.SendInfoBar(collectableName);
+    }
 }
+
 
