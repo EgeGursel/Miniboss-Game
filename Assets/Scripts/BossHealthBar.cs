@@ -28,7 +28,6 @@ public class BossHealthBar : MonoBehaviour
         bossHBAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
-        sceneLoader.GetComponent<SceneLoader>().Load("DeathScene 1");
     }
 }
 

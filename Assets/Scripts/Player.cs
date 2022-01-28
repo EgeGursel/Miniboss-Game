@@ -103,6 +103,7 @@ public class Player : MonoBehaviour
     }
     void Die()
     {
+        gameObject.SetActive(false);
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
     }
 

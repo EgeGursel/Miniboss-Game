@@ -30,7 +30,7 @@ public class InfoBarManager : MonoBehaviour
 
     public IEnumerator BarWait()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2.5f);
         infoBarAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);

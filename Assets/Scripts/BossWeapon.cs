@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
-	public int attackDamage = 20;
-	public int enragedAttackDamage = 40;
+	public int attackDamage = 15;
+	public int enragedAttackDamage = 30;
 
 	public Vector3 attackOffset;
-	public float attackRange = 1f;
+	public float attackRange = 0.7f;
 	public LayerMask attackMask;
 
 	public void Attack()

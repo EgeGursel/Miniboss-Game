@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_CheckPlayer : StateMachineBehaviour
 {
+    public float distance = 1.9f;
     private float distanceToPlayer;
     private Transform player;
     private Rigidbody2D rb;
@@ -18,7 +19,7 @@ public class Boss_CheckPlayer : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         distanceToPlayer = (Vector2.Distance(player.position, rb.position));
-        if (distanceToPlayer >= 1.9f)
+        if (distanceToPlayer >= distance)
         {
             animator.SetTrigger("Moving");
         }

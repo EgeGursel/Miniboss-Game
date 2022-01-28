@@ -5,6 +5,7 @@ using UnityEngine;
 public class Boss_Walk : StateMachineBehaviour
 {
     public float speed = 2.4f;
+    public float distance = 1.6f;
     private float distanceToPlayer;
     private Transform player;
     private Rigidbody2D rb;
@@ -23,16 +24,17 @@ public class Boss_Walk : StateMachineBehaviour
     {
         boss.LookAtPlayer();
         distanceToPlayer = (Vector2.Distance(player.position, rb.position));
-        if (distanceToPlayer >= 1.6f)
+        if (distanceToPlayer >= distance)
         {
             Vector2 target = new Vector2(player.position.x, rb.position.y);
             Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
         }
-        else if (distanceToPlayer < 1.6f)
+        else if (distanceToPlayer < distance)
         {
             animator.SetTrigger("Attack");
         }
+
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
