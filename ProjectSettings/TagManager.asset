@@ -17,7 +17,7 @@ TagManager:
   - Enemy
   - Collidable
   - PostProcessing
-  - 
+  - Background
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: BelowBelowDefault
+    uniqueID: 2419272623
+    locked: 0
   - name: BelowDefault
     uniqueID: 2656535301
     locked: 0

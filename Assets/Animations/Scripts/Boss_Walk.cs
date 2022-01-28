@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boss_Walk : StateMachineBehaviour
 {
+    Transform groundCheck;
+    public LayerMask collidableLayer;
     public float speed = 2.4f;
     public float distance = 1.6f;
     private float distanceToPlayer;
@@ -14,6 +16,7 @@ public class Boss_Walk : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        groundCheck = animator.gameObject.transform.GetChild(0);
         boss = animator.GetComponent<Boss>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
@@ -23,18 +26,20 @@ public class Boss_Walk : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         boss.LookAtPlayer();
-        distanceToPlayer = (Vector2.Distance(player.position, rb.position));
-        if (distanceToPlayer >= distance)
+        distanceToPlayer = Vector2.Distance(player.position, rb.position);
+        if (Physics2D.OverlapCircle(groundCheck.position, 0.1f, collidableLayer))
         {
-            Vector2 target = new Vector2(player.position.x, rb.position.y);
-            Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
-            rb.MovePosition(newPos);
+            if (distanceToPlayer >= distance)
+            {
+                Vector2 target = new Vector2(player.position.x, rb.position.y);
+                Vector2 newPos = Vector2.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
+                rb.MovePosition(newPos);
+            }
+            else if (distanceToPlayer < distance)
+            {
+                animator.SetTrigger("Attack");
+            }
         }
-        else if (distanceToPlayer < distance)
-        {
-            animator.SetTrigger("Attack");
-        }
-
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

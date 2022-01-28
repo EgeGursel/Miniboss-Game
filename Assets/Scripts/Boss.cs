@@ -13,6 +13,7 @@ public class Boss : MonoBehaviour
 
 	// ANIMATIONS & SCENE MANAGEMENT
 	private Light2D light2D;
+	public bool bossDefeated = false;
 	private SpriteRenderer spriteRenderer;
 	public ParticleSystem lightParticles;
 	public ParticleSystem explosionParticles;
@@ -20,14 +21,11 @@ public class Boss : MonoBehaviour
 	public Transform player;
 	public Animator bossAnimator;
     public bool isFlipped = true;
-	public GameObject sceneLoader;
-	private BossWeapon bossWeapon;
 
 	private void Start()
     {
 		bossAnimator.SetFloat("attackSpeed", 1f);
 		bossAnimator.SetFloat("walkSpeed", 1f);
-		bossWeapon = GetComponent<BossWeapon>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		light2D = GetComponent<Light2D>();
 		currentHealth = maxHealth;
@@ -84,8 +82,6 @@ public class Boss : MonoBehaviour
     {
 		ExplosionParticles();
 		gameObject.SetActive(false);
-		StartCoroutine(WaitTimeThree());
-		sceneLoader.GetComponent<SceneLoader>().Load("DeathScene 1");
 	}
 
 	private IEnumerator StartBossAnim()
@@ -110,7 +106,7 @@ public class Boss : MonoBehaviour
 	public void Enrage()
     {
 		EnrageVisuals();
-		bossAnimator.SetFloat("attackSpeed", 4f);
+		bossAnimator.SetFloat("attackSpeed", 2f);
 		bossAnimator.SetFloat("walkSpeed", 1.5f);
 		bossAnimator.GetBehaviour<Boss_Walk>().speed = 5f;
 	}
