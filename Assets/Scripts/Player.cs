@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
         string collectableName = collision.gameObject.name;
 
         // NON-INVENTORY COLLECTABLES
-        if (collectableName == "Dash Power up")
+        if (collectableName == "Dash Ability")
         {
             dashActive = true;
         }
