@@ -18,6 +18,7 @@ public class Boss : MonoBehaviour
 	public ParticleSystem lightParticles;
 	public ParticleSystem explosionParticles;
 	public ParticleSystem enrageParticles;
+	public ParticleSystem hurtParticles;
 	public Transform player;
 	public Animator bossAnimator;
     public bool isFlipped = true;
@@ -127,7 +128,8 @@ public class Boss : MonoBehaviour
 	private IEnumerator DamageVisuals()
 	{
 		spriteRenderer.color = Color.red;
-		yield return new WaitForSeconds(0.1f);
+		hurtParticles.Play();
+		yield return new WaitForSeconds(0.15f);
 		spriteRenderer.color = Color.white;
 	}
 }
