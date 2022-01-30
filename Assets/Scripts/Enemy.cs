@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // HEALTH
-    public int maxHealth = 100;
+    public int maxHealth = 140;
     public int currentHealth;
 
     // VISUALS
@@ -37,6 +37,7 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
+        // MAKE SLIME DROP SOMETHING (INSTANTIATE COIN)
         hurtPS.transform.position = gameObject.transform.position;
         hurtPS.Play();
         gameObject.SetActive(false);

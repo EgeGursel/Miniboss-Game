@@ -131,8 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd54dd05a227a94da3e956d7846baeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 70
-  currentHealth: 70
+  maxHealth: 140
+  currentHealth: 140
   hurtPS: {fileID: 0}
   attackDamage: 20
 --- !u!114 &1014275433218596370
@@ -152,7 +152,7 @@ MonoBehaviour:
     m_Bits: 256
   bodyCollider: {fileID: 1014275433218596399}
   groundCheck: {fileID: 1014275431793753539}
-  walkSpeed: 90
+  walkSpeed: 110
   mustPatrol: 0
 --- !u!95 &1014275433218596397
 Animator:
