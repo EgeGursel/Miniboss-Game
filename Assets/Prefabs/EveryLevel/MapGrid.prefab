@@ -480,7 +480,7 @@ TilemapRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1638431995
   m_SortingLayer: -1
-  m_SortingOrder: 20
+  m_SortingOrder: 10
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -517,6 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be0dd4d10e9169242835a6cd59c39778, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  infoBar: {fileID: 0}
   sceneLoader: {fileID: 0}
 --- !u!1 &1507452477396508667
 GameObject:

@@ -9,6 +9,7 @@ TagManager:
   - Damage
   - Kill
   - CoinCounter
+  - Enemy
   layers:
   - Default
   - TransparentFX

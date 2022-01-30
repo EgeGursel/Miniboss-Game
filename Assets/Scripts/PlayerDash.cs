@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlayerDash : MonoBehaviour
 {
-    PlayerPickUp playerPickUp;
     private Rigidbody2D rb;
     private KeyCode lastKeyCode;
     private bool dashCD = true;
@@ -12,15 +11,15 @@ public class PlayerDash : MonoBehaviour
     private float touchDelay = 0.3f;
     public float dashDistance = 15f;
     private float dashCooldown = 0.5f;
+    public bool isDashing = false;
 
     void Start()
     {
-        playerPickUp = GetComponent<PlayerPickUp>();
         rb = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
-        if (playerPickUp.dashActive)
+        if (PlayerPrefs.GetInt("DashActive") > 0)
         {
             if (Input.GetKeyDown(KeyCode.A))
             {
@@ -58,12 +57,13 @@ public class PlayerDash : MonoBehaviour
     }
     IEnumerator Dash(float direction)
     {
+        isDashing = true;
         float gravity = rb.gravityScale;
-        rb.gravityScale = 0.5f;
+        rb.gravityScale = 0.4f;
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         rb.AddForce(new Vector2(dashDistance * direction, 0f), ForceMode2D.Impulse);
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.15f);
         rb.gravityScale = gravity;
-        yield return new WaitForSeconds(10f);
+        isDashing = false;
     }
 }

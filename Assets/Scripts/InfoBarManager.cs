@@ -28,6 +28,13 @@ public class InfoBarManager : MonoBehaviour
         StartCoroutine(BarWait());
     }
 
+    public void SendSpecial(string varTextOne, string varTextTwo)
+    {
+        infoBarText1.text = varTextOne;
+        infoBarText2.text = varTextTwo;
+        StartCoroutine(BarWait());
+    }
+
     public IEnumerator BarWait()
     {
         yield return new WaitForSeconds(2.5f);

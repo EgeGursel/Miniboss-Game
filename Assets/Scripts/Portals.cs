@@ -5,6 +5,7 @@ using UnityEngine;
 public class Portals : MonoBehaviour
 {
     Player player;
+    public GameObject infoBar;
     public GameObject sceneLoader;
 
     void Start()
@@ -14,9 +15,14 @@ public class Portals : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
             sceneLoader.GetComponent<SceneLoader>().LoadNextScene();
+        }
+        else if (collision.CompareTag("Player") && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
+        {
+            infoBar.SetActive(true);    
+            InfoBarManager.instance.SendSpecial("Kill the enemies!", "");
         }
     }
 }

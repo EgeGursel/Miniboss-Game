@@ -7,7 +7,7 @@ public class PlayerAttack : MonoBehaviour
     public Transform attackArea;
     public float attackRange = 0.65f;
     public LayerMask enemyLayer;
-    public int attackDamage = 30;
+    public int attackDamage = 15;
     public float attackCooldown = 0.4f;
     private bool attackCD = true;
     public Animator weaponAnimator;
@@ -34,20 +34,20 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCD)
         {
-            // DETECT ENEMIES IN RANGE OF ATTACK
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
-
-            // DAMAGE ENEMIES
-            foreach (Collider2D enemy in hitEnemies)
+            if (weaponAnimator.gameObject.name == "Katana")
             {
-                try
+                // DETECT ENEMIES IN RANGE OF ATTACK
+                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
+
+                // DAMAGE ENEMIES
+                foreach (Collider2D enemy in hitEnemies)
                 {
                     enemy.GetComponent<Enemy>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
-                catch
-                {
-                    enemy.GetComponent<Boss>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
-                }
+            }
+            else if (weaponAnimator.gameObject.name == "Bow")
+            {
+                return;
             }
             weaponAnimator.SetTrigger("Attack");
             CameraShake.Instance.Shake(2f, .16f);

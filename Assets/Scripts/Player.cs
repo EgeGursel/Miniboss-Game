@@ -22,6 +22,7 @@ public class Player : MonoBehaviour
     public HealthBar healthbar;
 
     // MOVEMENT
+    PlayerDash playerDash;
     public CharacterController2D controller;
     public float runSpeed = 26f;
     float horizontalMove = 0f;
@@ -31,6 +32,7 @@ public class Player : MonoBehaviour
     {
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
         light2D = GetComponent<Light2D>();
+        playerDash = GetComponent<PlayerDash>();
         PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name); 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(currentHealth);
@@ -68,8 +70,11 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // PLAYER JUMP
-        controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
-        jump = false;
+        if (!playerDash.isDashing)
+        {
+            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            jump = false;
+        }
     }
     public void CreateDust()
     {
@@ -91,6 +96,10 @@ public class Player : MonoBehaviour
     {
         light2D.color = Color.red;
         coins.AddCoins(-PlayerPrefs.GetInt("Coins"));
+        if (SceneManager.GetActiveScene().name == "Level 2")
+        {
+            PlayerPrefs.SetInt("DashActive", 0);
+        }
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
     }
 }

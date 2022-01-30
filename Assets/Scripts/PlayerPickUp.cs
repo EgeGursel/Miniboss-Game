@@ -6,10 +6,10 @@ using UnityEngine.UI;
 public class PlayerPickUp : MonoBehaviour
 {
     Coins coins;
+    public GameObject shopSymbol;
     public GameObject infoBar;
     public GameObject boss;
     public Text coinText;
-    public bool dashActive = false;
     public bool weaponActive = false;
     private void Start()
     {
@@ -29,7 +29,7 @@ public class PlayerPickUp : MonoBehaviour
         // NON-VISUAL COLLECTABLES
         if (collectableName == "Dash Ability")
         {
-            dashActive = true;
+            PlayerPrefs.SetInt("DashActive", 1);
         }
         else if (collectableName == "Candy")
         {
@@ -39,6 +39,10 @@ public class PlayerPickUp : MonoBehaviour
         else if (collectableName.StartsWith("Coin"))
         {
             coins.AddCoins(1);
+            if (PlayerPrefs.GetInt("Coins") == 15)
+            {
+                shopSymbol.GetComponent<Animator>().SetTrigger("Attention");
+            }
             return;
         }
         // VISUAL COLLECTABLES

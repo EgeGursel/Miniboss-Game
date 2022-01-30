@@ -10,6 +10,7 @@ public class Coins : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
+        text.text = PlayerPrefs.GetInt("Coins").ToString();
     }
     public void AddCoins(int addedCoins)
     {

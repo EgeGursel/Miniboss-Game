@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PatrolAI : MonoBehaviour
 {
-    public float jumpForce;
     public LayerMask collidableLayer;
     public BoxCollider2D bodyCollider;
     public Transform groundCheck;
@@ -28,13 +27,20 @@ public class PatrolAI : MonoBehaviour
         if (mustPatrol)
         {
             Patrol();
+
         }
+    }
+    public IEnumerator PlayerBumped()
+    {
+        Flip();
+        yield return new WaitForSeconds(0.4f);
+        Flip();
     }
     private void FixedUpdate()
     {
         if (mustPatrol)
         {
-            mustFlip = !Physics2D.OverlapCircle(groundCheck.position, 0.1f, collidableLayer);
+            mustFlip = !Physics2D.OverlapCircle(groundCheck.position, 0.15f, collidableLayer);
         }
     }
     void Patrol()
@@ -51,14 +57,5 @@ public class PatrolAI : MonoBehaviour
         transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
         walkSpeed *= -1;
         mustPatrol = true;  
-    }
-
-    IEnumerator Hop()
-    {
-        while (mustPatrol)
-        {
-            rb.AddForce(transform.up * jumpForce);
-            yield return new WaitForSeconds(0.5f);
-        }
     }
 }

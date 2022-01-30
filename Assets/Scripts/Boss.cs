@@ -112,12 +112,6 @@ public class Boss : MonoBehaviour
 		bossAnimator.GetBehaviour<Boss_Walk>().speed = 5f;
 	}
 
-	IEnumerator WaitTimeThree()
-	{
-		yield return new WaitForSeconds(3f);
-	}
-
-
 	private void EnrageVisuals()
     {
 		enrageParticles.Play();
