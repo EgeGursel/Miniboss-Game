@@ -54,10 +54,10 @@ Material:
     - _FaceDilate: 0
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
-    - _GlowInner: 1
+    - _GlowInner: 0.6
     - _GlowOffset: 0.2
-    - _GlowOuter: 1
-    - _GlowPower: 0.75
+    - _GlowOuter: 0.6
+    - _GlowPower: 0.85
     - _GradientScale: 6
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
@@ -69,7 +69,7 @@ Material:
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.8333333
-    - _ScaleRatioB: 0.5642361
+    - _ScaleRatioB: 0.6770833
     - _ScaleRatioC: 0.6770833
     - _ScaleX: 1
     - _ScaleY: 1
@@ -162,9 +162,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
   m_Name: (G) Pixel Gosub SDF 1
   m_EditorClassIdentifier: 
-  hashCode: -1230089579
+  hashCode: -34145598
   material: {fileID: -3899907182789827394}
-  materialHashCode: 409619221
+  materialHashCode: 41186466
   m_Version: 1.1.0
   m_SourceFontFileGUID: 4086d7e94f82f6249b5ad3f37e878d4c
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 4086d7e94f82f6249b5ad3f37e878d4c, type: 3}
