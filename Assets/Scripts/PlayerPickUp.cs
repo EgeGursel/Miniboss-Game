@@ -39,7 +39,7 @@ public class PlayerPickUp : MonoBehaviour
         else if (collectableName.StartsWith("Coin"))
         {
             coins.AddCoins(1);
-            if (PlayerPrefs.GetInt("Coins") == 3)
+            if (PlayerPrefs.GetInt("Coins") == 15)
             {
                 shopSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
             }

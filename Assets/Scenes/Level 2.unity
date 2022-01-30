@@ -159,11 +159,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &24754211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6306792292125596504, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
-  m_PrefabInstance: {fileID: 280435382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &184846094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3646080006760205838, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
@@ -181,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774fc783d6d0f8947af3579f0e9b2c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 24754211}
+  pausePanel: {fileID: 0}
 --- !u!1001 &280435382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -299,7 +294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6753817946330191024, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
       propertyPath: m_Transition
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7427478759967359466, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
       propertyPath: m_Color.b
