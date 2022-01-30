@@ -5,8 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class Buttons : MonoBehaviour
 {
-    public void RestartGame()
+    public GameObject sceneLoader;
+    public void Respawn()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        sceneLoader.GetComponent<SceneLoader>().Load(PlayerPrefs.GetString("Scene"));
     }
 }

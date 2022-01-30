@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Weapon
   - Collectable
+  - Damage
+  - Kill
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Collidable
   - PostProcessing
   - Background
-  - 
+  - Platform
   - 
   - 
   - 

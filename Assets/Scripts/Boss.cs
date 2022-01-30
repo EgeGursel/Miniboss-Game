@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Boss : MonoBehaviour
 {
 	// HEALTH
-	public int maxHealth = 500;
+	public int maxHealth = 600;
 	public int currentHealth;
 	public BossHealthBar bossHealthbar;
 	public bool isDead = false;
