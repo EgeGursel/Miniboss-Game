@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerPickUp : MonoBehaviour
 {
-    int coins;
+    Coins coins;
     public GameObject infoBar;
     public GameObject boss;
     public Text coinText;
@@ -13,7 +13,7 @@ public class PlayerPickUp : MonoBehaviour
     public bool weaponActive = false;
     private void Start()
     {
-        coins = PlayerPrefs.GetInt("Coins");
+        coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -24,6 +24,7 @@ public class PlayerPickUp : MonoBehaviour
         }
 
         string collectableName = collision.gameObject.name;
+        Destroy(collision.gameObject);
 
         // NON-VISUAL COLLECTABLES
         if (collectableName == "Dash Ability")
@@ -35,7 +36,11 @@ public class PlayerPickUp : MonoBehaviour
             boss.SetActive(true);
             return;
         }
-
+        else if (collectableName.StartsWith("Coin"))
+        {
+            coins.AddCoins(1);
+            return;
+        }
         // VISUAL COLLECTABLES
         else
         {
@@ -51,13 +56,6 @@ public class PlayerPickUp : MonoBehaviour
                     child.gameObject.SetActive(false);
                 }
             }
-        }
-        Destroy(collision.gameObject);
-        if (collectableName == "Coin")
-        {
-            PlayerPrefs.SetInt("Coins", coins += 1);
-            coinText.text = coins.ToString();
-            return;
         }
         infoBar.SetActive(true);
         InfoBarManager.instance.SendInfoBar(collectableName);

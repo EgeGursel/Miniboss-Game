@@ -8,6 +8,7 @@ TagManager:
   - Collectable
   - Damage
   - Kill
+  - CoinCounter
   layers:
   - Default
   - TransparentFX

@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    // COINS
+    Coins coins;
+
     // ANIMATIONS & SCENE MANAGEMENT
-    Rigidbody2D rb;
-    SpriteRenderer spriteRenderer;
+    Light2D light2D;
     public GameObject sceneLoader;
     public ParticleSystem dust;
     public Animator playerAnimator;
@@ -26,16 +29,29 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
+        light2D = GetComponent<Light2D>();
         PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name); 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(currentHealth);
-        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (!(PlayerPrefs.GetFloat("RunSpeed") > 0))
+        {
+            PlayerPrefs.SetFloat("RunSpeed", 1);
+        }
+        if (!(PlayerPrefs.GetFloat("AttackDamage") > 0))
+        {
+            PlayerPrefs.SetFloat("AttackDamage", 1);
+        }
+        if (!(PlayerPrefs.GetInt("Shield") > 0))
+        {
+            PlayerPrefs.SetInt("Shield", 1);
+        }
     }
     private void Update()
     {
         // PLAYER MOVEMENT
-        horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        horizontalMove = Input.GetAxisRaw("Horizontal") * (runSpeed * PlayerPrefs.GetFloat("RunSpeed"));
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
         if (Input.GetButtonDown("Jump"))
@@ -62,7 +78,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= damage;
+        currentHealth -= Mathf.RoundToInt(damage / PlayerPrefs.GetInt("Shield"));
         playerAnimator.SetTrigger("Damaged");
         healthbar.SetHealth(currentHealth);
 
@@ -73,9 +89,8 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        spriteRenderer.color = Color.red;
-        // USE RIGIDBODY2D AND MAKE PLAYER STOP ALL MOVEMENT
-        PlayerPrefs.SetInt("Coins", 0);
+        light2D.color = Color.red;
+        coins.AddCoins(-PlayerPrefs.GetInt("Coins"));
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
     }
 }

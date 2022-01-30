@@ -42,11 +42,11 @@ public class PlayerAttack : MonoBehaviour
             {
                 try
                 {
-                    enemy.GetComponent<Enemy>().Damage(attackDamage);
+                    enemy.GetComponent<Enemy>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
                 catch
                 {
-                    enemy.GetComponent<Boss>().Damage(attackDamage);
+                    enemy.GetComponent<Boss>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
             }
             weaponAnimator.SetTrigger("Attack");

@@ -9,12 +9,23 @@ public class SceneLoader : MonoBehaviour
     public float transitionTime;
     public void Load(string sceneName)
     {
-        StartCoroutine(Loader(sceneName));
+        StartCoroutine(LoaderByName(sceneName));
     }
-    IEnumerator Loader(string sceneName)
+    public void LoadNextScene()
+    {
+        StartCoroutine(LoaderByIndex(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+    IEnumerator LoaderByName(string sceneName)
     {
         transition.SetTrigger("SceneChange");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
+    }
+
+    IEnumerator LoaderByIndex(int sceneIndex)
+    {
+        transition.SetTrigger("SceneChange");
+        yield return new WaitForSeconds(transitionTime);
+        SceneManager.LoadScene(sceneIndex);
     }
 }
