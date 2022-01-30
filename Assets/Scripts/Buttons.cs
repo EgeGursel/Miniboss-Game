@@ -8,6 +8,25 @@ public class Buttons : MonoBehaviour
     public GameObject sceneLoader;
     public void Respawn()
     {
-        sceneLoader.GetComponent<SceneLoader>().Load(PlayerPrefs.GetString("Scene"));
+        try
+        {
+            sceneLoader.GetComponent<SceneLoader>().Load(PlayerPrefs.GetString("Scene"));
+        }
+        catch
+        {
+            sceneLoader.GetComponent<SceneLoader>().LoadNextScene();
+        }
+    }
+    public void ResetGame()
+    {
+        PlayerPrefs.DeleteAll();
+    }
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    public void Menu()
+    {
+        sceneLoader.GetComponent<SceneLoader>().Load("MainMenu");
     }
 }
