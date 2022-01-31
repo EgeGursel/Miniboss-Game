@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public GameObject sceneLoader;
     public ParticleSystem dust;
     public Animator playerAnimator;
+    public GameObject uIUpgrades;
 
     // HEALTH
     public int maxHealth = 100;
@@ -29,7 +30,7 @@ public class Player : MonoBehaviour
     bool jump = false;
 
     private void Start()
-    {
+    {       
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
         light2D = GetComponent<Light2D>();
         playerDash = GetComponent<PlayerDash>();
@@ -45,10 +46,13 @@ public class Player : MonoBehaviour
         {
             PlayerPrefs.SetFloat("AttackDamage", 1);
         }
-        if (!(PlayerPrefs.GetInt("Shield") > 0))
+        if (!(PlayerPrefs.GetFloat("Shield") > 0))
         {
-            PlayerPrefs.SetInt("Shield", 1);
+            PlayerPrefs.SetFloat("Shield", 1);
         }
+        uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
+        uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
+        uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
     private void Update()
     {
@@ -83,7 +87,7 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        currentHealth -= Mathf.RoundToInt(damage / PlayerPrefs.GetInt("Shield"));
+        currentHealth -= Mathf.RoundToInt(damage / PlayerPrefs.GetFloat("Shield"));
         playerAnimator.SetTrigger("Damaged");
         healthbar.SetHealth(currentHealth);
 

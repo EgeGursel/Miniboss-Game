@@ -11,6 +11,8 @@ public class Portals : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<Player>().GetComponent<Player>();
+        infoBar.SetActive(true);
+        InfoBarManager.instance.SendSpecial("Progress Saved", "");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

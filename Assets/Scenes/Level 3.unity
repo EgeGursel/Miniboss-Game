@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &24754211 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6306792292125596504, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
-  m_PrefabInstance: {fileID: 280435382}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &184846094 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3646080006760205838, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
@@ -145,7 +140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774fc783d6d0f8947af3579f0e9b2c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 24754211}
+  pausePanel: {fileID: 0}
 --- !u!1001 &280435382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -323,6 +318,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4044700233504321698, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
   m_PrefabInstance: {fileID: 280435382}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &280435387 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1314886580350288575, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
+  m_PrefabInstance: {fileID: 280435382}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &439417021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -476,6 +476,10 @@ PrefabInstance:
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 280435383}
+    - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: uIUpgrades
+      value: 
+      objectReference: {fileID: 280435387}
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: sceneLoader
       value: 
@@ -2808,6 +2812,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MapGrid
       objectReference: {fileID: 0}
+    - target: {fileID: 7013915512103959597, guid: f9d97cfe01ce0ea4283f9f048ca0d0cf, type: 3}
+      propertyPath: infoBar
+      value: 
+      objectReference: {fileID: 280435385}
+    - target: {fileID: 7013915512103959597, guid: f9d97cfe01ce0ea4283f9f048ca0d0cf, type: 3}
+      propertyPath: sceneLoader
+      value: 
+      objectReference: {fileID: 439417022}
     - target: {fileID: 8339332731247653347, guid: f9d97cfe01ce0ea4283f9f048ca0d0cf, type: 3}
       propertyPath: m_Size.x
       value: 18

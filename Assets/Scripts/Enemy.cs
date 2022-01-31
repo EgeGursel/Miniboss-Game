@@ -17,6 +17,9 @@ public class Enemy : MonoBehaviour
     Player player;
     PatrolAI patrolAI;
 
+    // DROP COINS
+    public Transform coinPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,7 @@ public class Enemy : MonoBehaviour
         // MAKE SLIME DROP SOMETHING (INSTANTIATE COIN)
         hurtPS.transform.position = gameObject.transform.position;
         hurtPS.Play();
+        Instantiate(coinPrefab, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
     }
     IEnumerator HurtVisuals()

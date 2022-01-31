@@ -12,18 +12,12 @@ public class InfoBarManager : MonoBehaviour
     }
 
     public Text infoBarText1;
-    public string text1;
     public Text infoBarText2;
     public Animator infoBarAnimator;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        infoBarText1.text = text1;
-    }
-
     public void SendInfoBar(string varText)
     {
+        infoBarText1.text = "You just picked up";
         infoBarText2.text = varText;
         StartCoroutine(BarWait());
     }
@@ -37,7 +31,7 @@ public class InfoBarManager : MonoBehaviour
 
     public IEnumerator BarWait()
     {
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(2f);
         infoBarAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
