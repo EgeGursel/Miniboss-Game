@@ -19,7 +19,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && playerPickUp.weaponActive)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerPrefs.GetInt("Katana") == 1 || PlayerPrefs.GetInt("Bow") == 1)
         {
             Attack();
         }

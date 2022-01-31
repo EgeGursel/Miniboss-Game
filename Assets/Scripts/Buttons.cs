@@ -25,8 +25,4 @@ public class Buttons : MonoBehaviour
     {
         Application.Quit();
     }
-    public void Menu()
-    {
-        sceneLoader.GetComponent<SceneLoader>().Load("MainMenu");
-    }
 }

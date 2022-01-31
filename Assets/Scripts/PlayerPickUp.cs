@@ -10,7 +10,6 @@ public class PlayerPickUp : MonoBehaviour
     public GameObject infoBar;
     public GameObject boss;
     public Text coinText;
-    public bool weaponActive = false;
     private void Start()
     {
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
@@ -48,16 +47,18 @@ public class PlayerPickUp : MonoBehaviour
         // VISUAL COLLECTABLES
         else
         {
+            
             foreach (Transform child in transform)
             {
                 if (collectableName == child.name)
                 {
                     child.gameObject.SetActive(true);
-                    weaponActive = true;
+                    PlayerPrefs.SetInt(collectableName, 1);
                 }
                 else
                 {
                     child.gameObject.SetActive(false);
+                    PlayerPrefs.SetInt(child.name, 0);
                 }
             }
         }

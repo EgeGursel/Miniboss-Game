@@ -53,6 +53,11 @@ public class Player : MonoBehaviour
         uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
         uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
         uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
+
+        if (PlayerPrefs.GetInt("Katana") == 1)
+        {
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
     }
     private void Update()
     {

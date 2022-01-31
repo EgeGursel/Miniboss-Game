@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
+    public GameObject pauseCanvas;
+    Canvas canvas;
     public static bool isPaused = false;
-    public GameObject pausePanel;
+    private void Start()
+    {
+        canvas = GetComponent<Canvas>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -22,13 +27,15 @@ public class PauseMenu : MonoBehaviour
     }
     public void Resume()
     {
-        pausePanel.SetActive(false);
+        canvas.enabled = true;
+        pauseCanvas.SetActive(false);
         Time.timeScale = 1f;
         isPaused = false;
     }
     public void Pause()
     {
-        pausePanel.SetActive(true);
+        canvas.enabled = false;
+        pauseCanvas.SetActive(true);
         Time.timeScale = 0f;
         isPaused = true;
     }
