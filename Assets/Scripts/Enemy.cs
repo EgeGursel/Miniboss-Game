@@ -40,9 +40,7 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        // MAKE SLIME DROP SOMETHING (INSTANTIATE COIN)
-        hurtPS.transform.position = gameObject.transform.position;
-        hurtPS.Play();
+        Instantiate(hurtPS, transform.position, transform.rotation);
         Instantiate(coinPrefab, gameObject.transform.position, gameObject.transform.rotation);
         gameObject.SetActive(false);
     }

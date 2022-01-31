@@ -11,15 +11,10 @@ public class PlayerAttack : MonoBehaviour
     public float attackCooldown = 0.4f;
     private bool attackCD = true;
     public Animator weaponAnimator;
-    PlayerPickUp playerPickUp;
 
-    void Start()
-    {
-        playerPickUp = GetComponent<PlayerPickUp>();
-    }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) && PlayerPrefs.GetInt("Katana") == 1 || PlayerPrefs.GetInt("Bow") == 1)
+        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Katana") == 1 && PlayerPrefs.GetInt("Bow") == 0)
         {
             Attack();
         }
@@ -44,10 +39,6 @@ public class PlayerAttack : MonoBehaviour
                 {
                     enemy.GetComponent<Enemy>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
-            }
-            else if (weaponAnimator.gameObject.name == "Bow")
-            {
-                return;
             }
             weaponAnimator.SetTrigger("Attack");
             CameraShake.Instance.Shake(2f, .16f);
