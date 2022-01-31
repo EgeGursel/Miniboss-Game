@@ -5113,7 +5113,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopSymbol: {fileID: 8684316852440594381, guid: 6bf1c9e05913e3e4db738a94de1eaa10, type: 3}
   infoBar: {fileID: 4533211935270345219, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
-  boss: {fileID: 3076008742404396864, guid: 0cb19d53d03c0134bb127a8379d8ea95, type: 3}
+  boss: {fileID: 0}
   coinText: {fileID: 2823526373689813737, guid: 83c6433da1feb0f429c7dd31a60f9cc0, type: 3}
 --- !u!114 &7527583855348200438
 MonoBehaviour:

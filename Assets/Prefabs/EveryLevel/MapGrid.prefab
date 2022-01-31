@@ -812,8 +812,8 @@ GameObject:
   - component: {fileID: 3869089680294509433}
   - component: {fileID: 8648802142155367188}
   - component: {fileID: 3197591167195367551}
-  - component: {fileID: 5604942943622605306}
   - component: {fileID: 1072488235491403455}
+  - component: {fileID: 5604942943622605306}
   m_Layer: 0
   m_Name: Tilemap-FakePortal
   m_TagString: Untagged
@@ -955,19 +955,6 @@ TilemapRenderer:
   m_Mode: 0
   m_DetectChunkCullingBounds: 0
   m_MaskInteraction: 0
---- !u!114 &5604942943622605306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5018252608595424465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d185be611be46e74896935893d8a6cbb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infoBar: {fileID: 4533211935270345219, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
 --- !u!19719996 &1072488235491403455
 TilemapCollider2D:
   m_ObjectHideFlags: 0
@@ -984,6 +971,19 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
+--- !u!114 &5604942943622605306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5018252608595424465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d185be611be46e74896935893d8a6cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  infoBar: {fileID: 4533211935270345219, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
 --- !u!1 &5451177753852552466
 GameObject:
   m_ObjectHideFlags: 0

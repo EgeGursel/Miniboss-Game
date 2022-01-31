@@ -2719,6 +2719,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfoBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4533211935270345219, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
 --- !u!224 &3646080005955066475 stripped

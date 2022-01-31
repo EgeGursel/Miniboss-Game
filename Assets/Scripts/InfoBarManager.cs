@@ -39,14 +39,14 @@ public class InfoBarManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         infoBarAnimator.SetTrigger("End");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         gameObject.SetActive(false);
     }
     public IEnumerator BarQuickWait()
     {
         yield return new WaitForSeconds(1.5f);
         infoBarAnimator.SetTrigger("End");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.6f);
         gameObject.SetActive(false);
     }
 }
