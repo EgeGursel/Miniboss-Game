@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
     // ATTACK
     public int attackDamage = 20;
+    public GameObject playerObject;
     Player player;
     PatrolAI patrolAI;
 
@@ -25,7 +26,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         spriteRenderer = GetComponent<SpriteRenderer>();
-        player = FindObjectOfType<Player>().GetComponent<Player>();
+        player = playerObject.GetComponent<Player>();
         patrolAI = GetComponent<PatrolAI>();
     }
     public void Damage(int damage)
@@ -40,8 +41,9 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        Instantiate(hurtPS, transform.position, transform.rotation);
-        Instantiate(coinPrefab, gameObject.transform.position, gameObject.transform.rotation);
+        hurtPS.transform.position = transform.position;
+        hurtPS.Play();
+        Instantiate(coinPrefab, gameObject.transform.position, transform.rotation);
         gameObject.SetActive(false);
     }
     IEnumerator HurtVisuals()

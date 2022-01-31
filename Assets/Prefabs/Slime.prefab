@@ -136,6 +136,7 @@ MonoBehaviour:
   currentHealth: 140
   hurtPS: {fileID: 7660694112356785380, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
   attackDamage: 20
+  playerObject: {fileID: 7527583855348200441, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
   coinPrefab: {fileID: 8820068092325965038, guid: 303d27fea96f384438374bf681cb764f, type: 3}
 --- !u!114 &1014275433218596370
 MonoBehaviour:
@@ -206,7 +207,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.0585078, y: -0.18}
