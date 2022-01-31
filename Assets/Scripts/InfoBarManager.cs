@@ -28,10 +28,23 @@ public class InfoBarManager : MonoBehaviour
         infoBarText2.text = varTextTwo;
         StartCoroutine(BarWait());
     }
+    public void SendQuickSpecial(string varTextOne, string varTextTwo)
+    {
+        infoBarText1.text = varTextOne;
+        infoBarText2.text = varTextTwo;
+        StartCoroutine(BarQuickWait());
+    }
 
     public IEnumerator BarWait()
     {
         yield return new WaitForSeconds(2f);
+        infoBarAnimator.SetTrigger("End");
+        yield return new WaitForSeconds(1f);
+        gameObject.SetActive(false);
+    }
+    public IEnumerator BarQuickWait()
+    {
+        yield return new WaitForSeconds(1.5f);
         infoBarAnimator.SetTrigger("End");
         yield return new WaitForSeconds(1f);
         gameObject.SetActive(false);
