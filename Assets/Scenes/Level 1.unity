@@ -1458,6 +1458,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8908706937504578837, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
   m_PrefabInstance: {fileID: 1380011502}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1380011508 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 137819887775492211, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
+  m_PrefabInstance: {fileID: 1380011502}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1401083364
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13203,6 +13208,14 @@ PrefabInstance:
       propertyPath: shopSymbol
       value: 
       objectReference: {fileID: 1380011506}
+    - target: {fileID: 7527583855348200435, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: shopOneSymbol
+      value: 
+      objectReference: {fileID: 1380011506}
+    - target: {fileID: 7527583855348200435, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: shopTwoSymbol
+      value: 
+      objectReference: {fileID: 1380011508}
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: hurtPS
       value: 

@@ -16,7 +16,7 @@ public class Spikes : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            player.TakeDamage(100);
+            player.TakeDamage(70);
         }
     }
 }

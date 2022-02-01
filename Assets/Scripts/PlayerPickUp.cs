@@ -10,7 +10,8 @@ public class PlayerPickUp : MonoBehaviour
     Player player;
     public int levelSoulCount = 0;
     public int levelCoinCount = 0;
-    public GameObject shopSymbol;
+    public GameObject shopOneSymbol;
+    public GameObject shopTwoSymbol;
     public GameObject infoBar;
     public GameObject boss;
     private void Start()
@@ -46,7 +47,7 @@ public class PlayerPickUp : MonoBehaviour
             coins.AddCoins(1);
             if (PlayerPrefs.GetInt("Coins") == 15)
             {
-                shopSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
+                shopOneSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
             }
             return;
         }
@@ -54,6 +55,10 @@ public class PlayerPickUp : MonoBehaviour
         {
             levelSoulCount += 1;
             souls.AddSouls(1);
+            if (PlayerPrefs.GetInt("SoulFragments") == 15)
+            {
+                shopTwoSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
+            }
             return;
         }
         else if (collectableName.StartsWith("Health"))

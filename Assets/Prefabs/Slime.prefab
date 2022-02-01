@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014275431793753538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.4, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0.5, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1014275433218596396}
@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 1014275433218596397}
   - component: {fileID: 1014275433218596398}
   - component: {fileID: 1014275433218596399}
-  - component: {fileID: 6516773445010610514}
   - component: {fileID: -6989084749148125893}
+  - component: {fileID: 7625769340970065647}
   m_Layer: 7
   m_Name: Slime
   m_TagString: Enemy
@@ -136,7 +136,6 @@ MonoBehaviour:
   currentHealth: 120
   hurtPS: {fileID: 7660694112356785380, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
   attackDamage: 20
-  playerObject: {fileID: 7527583855348200441, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
   soulPrefab: {fileID: 6687285072594805865, guid: be05757763840014ea0eb2a06b5cbd76, type: 3}
 --- !u!114 &1014275433218596370
 MonoBehaviour:
@@ -210,7 +209,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.047153622, y: -0.18}
+  m_Offset: {x: 0.06043704, y: -0.22314793}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,24 +220,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6543072, y: 0.32}
+  m_Size: {x: 0.680874, y: 0.40629584}
   m_EdgeRadius: 0
---- !u!58 &6516773445010610514
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1014275433218596369}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: -0.3}
-  serializedVersion: 2
-  m_Radius: 0.2
 --- !u!114 &-6989084749148125893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,3 +263,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!70 &7625769340970065647
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1014275433218596369}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.02, y: -0.4}
+  m_Size: {x: 0.6, y: 0.2}
+  m_Direction: 1
