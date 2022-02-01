@@ -11503,6 +11503,10 @@ PrefabInstance:
       propertyPath: sceneLoader
       value: 
       objectReference: {fileID: 439417022}
+    - target: {fileID: 794913897458941080, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
+      propertyPath: m_Name
+      value: SoulSymbol
+      objectReference: {fileID: 0}
     - target: {fileID: 2556613350413142938, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}
       propertyPath: pauseCanvas
       value: 
@@ -12000,6 +12004,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7527583855348200417, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7527583855348200435, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: infoBar
       value: 
@@ -12008,6 +12016,10 @@ PrefabInstance:
       propertyPath: shopSymbol
       value: 
       objectReference: {fileID: 1380011506}
+    - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: hurtPS
+      value: 
+      objectReference: {fileID: 193135203}
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: healthbar
       value: 
@@ -12023,6 +12035,18 @@ PrefabInstance:
     - target: {fileID: 7527583855348200441, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527583855348200444, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527583855348200444, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7527583855348200444, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7527583855348200445, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: m_RootOrder

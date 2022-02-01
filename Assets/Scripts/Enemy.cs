@@ -5,12 +5,12 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     // HEALTH
-    public int maxHealth = 140;
+    public int maxHealth = 120;
     public int currentHealth;
 
     // VISUALS
     public ParticleSystem hurtPS;
-    SpriteRenderer spriteRenderer;
+    Animator enemyAnimator;
 
     // ATTACK
     public int attackDamage = 20;
@@ -18,14 +18,14 @@ public class Enemy : MonoBehaviour
     Player player;
     PatrolAI patrolAI;
 
-    // DROP COINS
-    public Transform coinPrefab;
+    // DROP
+    public Transform soulPrefab;
 
     // Start is called before the first frame update
     void Start()
     {
         currentHealth = maxHealth;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        enemyAnimator = GetComponent<Animator>();
         player = playerObject.GetComponent<Player>();
         patrolAI = GetComponent<PatrolAI>();
     }
@@ -37,20 +37,14 @@ public class Enemy : MonoBehaviour
             Die();
             return;
         }
-        StartCoroutine(HurtVisuals());
+        enemyAnimator.SetTrigger("Damaged");
     }
     public void Die()
     {
         hurtPS.transform.position = transform.position;
         hurtPS.Play();
-        Instantiate(coinPrefab, gameObject.transform.position, transform.rotation);
+        Instantiate(soulPrefab, transform.position, transform.rotation);
         gameObject.SetActive(false);
-    }
-    IEnumerator HurtVisuals()
-    {
-        spriteRenderer.color = Color.red;
-        yield return new WaitForSeconds(0.15f);
-        spriteRenderer.color = Color.white;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

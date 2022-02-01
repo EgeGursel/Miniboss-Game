@@ -10,6 +10,7 @@ TagManager:
   - Kill
   - CoinCounter
   - Enemy
+  - SoulCounter
   layers:
   - Default
   - TransparentFX

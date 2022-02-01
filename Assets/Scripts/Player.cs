@@ -7,11 +7,14 @@ using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
-    // COINS
+    // COINS & SOULS
+    PlayerPickUp playerPickUp;
     Coins coins;
+    Coins souls;
 
     // ANIMATIONS & SCENE MANAGEMENT
     Light2D light2D;
+    public ParticleSystem hurtPS;
     public GameObject sceneLoader;
     public ParticleSystem dust;
     public Animator playerAnimator;
@@ -30,7 +33,9 @@ public class Player : MonoBehaviour
     bool jump = false;
 
     private void Start()
-    {       
+    {
+        playerPickUp = GetComponent<PlayerPickUp>();
+        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
         light2D = GetComponent<Light2D>();
         playerDash = GetComponent<PlayerDash>();
@@ -65,6 +70,10 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        if (Time.timeScale == 0f)
+        {
+            return;
+        }
         // PLAYER MOVEMENT
         horizontalMove = Input.GetAxisRaw("Horizontal") * (runSpeed * PlayerPrefs.GetFloat("RunSpeed"));
         playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
@@ -83,7 +92,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         // PLAYER JUMP
-        if (!playerDash.isDashing)
+        if (!playerDash.isDashing && Time.timeScale == 1f)
         {
             controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
             jump = false;
@@ -98,6 +107,7 @@ public class Player : MonoBehaviour
     {
         currentHealth -= Mathf.RoundToInt(damage / PlayerPrefs.GetFloat("Shield"));
         playerAnimator.SetTrigger("Damaged");
+        CameraShake.Instance.Shake(2f, .16f);
         healthbar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -105,15 +115,32 @@ public class Player : MonoBehaviour
             Die();
         }
     }
+    public void Heal(int heal)
+    {
+        if (currentHealth + heal <= 100)
+        {
+            currentHealth += heal;
+        }
+        else
+        {
+            currentHealth = 100;
+        }
+        playerAnimator.SetTrigger("Healed");
+        healthbar.SetHealth(currentHealth);
+    }
     public void Die()
     {
         light2D.color = Color.red;
-        coins.AddCoins(-PlayerPrefs.GetInt("Coins"));
+        hurtPS.transform.position = transform.position;
+        hurtPS.Play();
+        coins.AddCoins(-playerPickUp.levelCoinCount);
+        souls.AddSouls(-playerPickUp.levelSoulCount);
         if (SceneManager.GetActiveScene().name == "Level 2")
         {
             PlayerPrefs.SetInt("DashActive", 0);
         }
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
+        gameObject.SetActive(false);
     }
 }
 

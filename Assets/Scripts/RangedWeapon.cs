@@ -19,7 +19,7 @@ public class RangedWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Bow") == 1 && PlayerPrefs.GetInt("Katana") == 0)
+        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Bow") == 1 && Time.timeScale == 1f)
         {
             Shoot();
         }

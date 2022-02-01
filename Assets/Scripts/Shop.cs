@@ -10,7 +10,6 @@ public class Shop : MonoBehaviour
     private GameObject sbLogo;
     private GameObject dmgLogo;
     private GameObject sLogo;
-    public GameObject items;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +43,7 @@ public class Shop : MonoBehaviour
     }
     public void CheckAvailability()
     {
-        foreach (Button button in items.GetComponentsInChildren<Button>())
+        foreach (Button button in GetComponentsInChildren<Button>())
         {
             if (PlayerPrefs.GetInt("Coins") < int.Parse(button.GetComponentInChildren<Text>().text))
             {

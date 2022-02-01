@@ -14,7 +14,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Katana") == 1 && PlayerPrefs.GetInt("Bow") == 0)
+        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Katana") == 1 && Time.timeScale == 1f)
         {
             Attack();
         }

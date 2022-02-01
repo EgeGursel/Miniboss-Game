@@ -6,13 +6,18 @@ using UnityEngine.UI;
 public class PlayerPickUp : MonoBehaviour
 {
     Coins coins;
+    Coins souls;
+    Player player;
+    public int levelSoulCount = 0;
+    public int levelCoinCount = 0;
     public GameObject shopSymbol;
     public GameObject infoBar;
     public GameObject boss;
-    public Text coinText;
     private void Start()
     {
+        player = GetComponent<Player>();
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
+        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -37,6 +42,7 @@ public class PlayerPickUp : MonoBehaviour
         }
         else if (collectableName.StartsWith("Coin"))
         {
+            levelCoinCount += 1;
             coins.AddCoins(1);
             if (PlayerPrefs.GetInt("Coins") == 15)
             {
@@ -44,10 +50,21 @@ public class PlayerPickUp : MonoBehaviour
             }
             return;
         }
+        else if (collectableName.StartsWith("Soul Fragment"))
+        {
+            levelSoulCount += 1;
+            souls.AddSouls(1);
+            return;
+        }
+        else if (collectableName.StartsWith("Health"))
+        {
+            player.Heal(25);
+            return;
+        }
         // VISUAL COLLECTABLES
         else
         {
-            
+
             foreach (Transform child in transform)
             {
                 if (collectableName == child.name)

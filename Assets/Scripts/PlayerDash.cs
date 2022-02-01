@@ -8,7 +8,7 @@ public class PlayerDash : MonoBehaviour
     private KeyCode lastKeyCode;
     private bool dashCD = true;
     private float InitialTouch;
-    private float touchDelay = 0.3f;
+    private float touchDelay = 0.2f;
     public float dashDistance = 15f;
     private float dashCooldown = 0.5f;
     public bool isDashing = false;

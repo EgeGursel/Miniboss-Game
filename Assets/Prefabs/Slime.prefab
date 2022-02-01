@@ -132,12 +132,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfd54dd05a227a94da3e956d7846baeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 140
-  currentHealth: 140
+  maxHealth: 120
+  currentHealth: 120
   hurtPS: {fileID: 7660694112356785380, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
   attackDamage: 20
   playerObject: {fileID: 7527583855348200441, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
-  coinPrefab: {fileID: 8820068092325965038, guid: 303d27fea96f384438374bf681cb764f, type: 3}
+  soulPrefab: {fileID: 6687285072594805865, guid: be05757763840014ea0eb2a06b5cbd76, type: 3}
 --- !u!114 &1014275433218596370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +210,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0585078, y: -0.18}
+  m_Offset: {x: 0.026018932, y: -0.18}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -221,7 +221,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.67701554, y: 0.32}
+  m_Size: {x: 0.6120378, y: 0.32}
   m_EdgeRadius: 0
 --- !u!58 &6516773445010610514
 CircleCollider2D:
@@ -236,9 +236,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.18}
+  m_Offset: {x: 0.01, y: -0.3}
   serializedVersion: 2
-  m_Radius: 0.3
+  m_Radius: 0.2
 --- !u!114 &-6989084749148125893
 MonoBehaviour:
   m_ObjectHideFlags: 0
