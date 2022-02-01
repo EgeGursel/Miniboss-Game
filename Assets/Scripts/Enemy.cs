@@ -16,7 +16,6 @@ public class Enemy : MonoBehaviour
     public int attackDamage = 20;
     GameObject playerObject;
     Player player;
-    PatrolAI patrolAI;
 
     // DROP
     public Transform soulPrefab;
@@ -28,7 +27,6 @@ public class Enemy : MonoBehaviour
         enemyAnimator = GetComponent<Animator>();
         playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
-        patrolAI = GetComponent<PatrolAI>();
     }
     public void Damage(int damage)
     {
@@ -49,10 +47,10 @@ public class Enemy : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             player.TakeDamage(attackDamage);
-            StartCoroutine(patrolAI.PlayerBumped());
         }
+        return;
     }
 }

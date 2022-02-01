@@ -30,17 +30,11 @@ public class PatrolAI : MonoBehaviour
 
         }
     }
-    public IEnumerator PlayerBumped()
-    {
-        Flip();
-        yield return new WaitForSeconds(0.5f);
-        Flip();
-    }
     private void FixedUpdate()
     {
         if (mustPatrol)
         {
-            mustFlip = !Physics2D.OverlapCircle(groundCheck.position, 0.15f, collidableLayer);
+            mustFlip = !Physics2D.OverlapCircle(groundCheck.position, 0.1f, collidableLayer);
         }
     }
     void Patrol()
