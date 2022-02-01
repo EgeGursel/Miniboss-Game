@@ -1,2 +1,2 @@
-# Miniboss-Game
-2D Miniboss Game made using Unity
+# Untitled Amogus Game :suspect:
+2D roguelite(ish) platformer game made using Unity!
