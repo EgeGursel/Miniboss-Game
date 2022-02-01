@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     // ATTACK
     public int attackDamage = 20;
-    public GameObject playerObject;
+    GameObject playerObject;
     Player player;
     PatrolAI patrolAI;
 
@@ -26,6 +26,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth = maxHealth;
         enemyAnimator = GetComponent<Animator>();
+        playerObject = GameObject.FindGameObjectWithTag("Player");
         player = playerObject.GetComponent<Player>();
         patrolAI = GetComponent<PatrolAI>();
     }

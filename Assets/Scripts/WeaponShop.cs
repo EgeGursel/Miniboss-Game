@@ -5,11 +5,10 @@ using UnityEngine.UI;
 
 public class WeaponShop : MonoBehaviour
 {
-    Coins souls;
+    public Coins souls;
     // Start is called before the first frame update
     void Start()
     {
-        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
         CheckAvailability();
     }
     public void BuyBow()

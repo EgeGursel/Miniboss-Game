@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Shop : MonoBehaviour
 {
-    Coins coins;
+    public Coins coins;
     public GameObject uIUpgrades;
     private GameObject sbLogo;
     private GameObject dmgLogo;
@@ -17,7 +17,6 @@ public class Shop : MonoBehaviour
         sbLogo = uIUpgrades.transform.GetChild(0).gameObject;
         dmgLogo = uIUpgrades.transform.GetChild(1).gameObject;
         sLogo = uIUpgrades.transform.GetChild(2).gameObject;
-        coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
         CheckAvailability();
     }
     public void BuySB()
