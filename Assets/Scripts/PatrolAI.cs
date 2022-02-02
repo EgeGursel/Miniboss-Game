@@ -5,6 +5,7 @@ using UnityEngine;
 public class PatrolAI : MonoBehaviour
 {
     public LayerMask collidableLayer;
+    public LayerMask enemyLayer;
     public BoxCollider2D bodyCollider;
     public Transform groundCheck;
     public float walkSpeed;
@@ -39,7 +40,7 @@ public class PatrolAI : MonoBehaviour
     }
     void Patrol()
     {
-        if (mustFlip || bodyCollider.IsTouchingLayers(collidableLayer))
+        if (mustFlip || bodyCollider.IsTouchingLayers(collidableLayer) || bodyCollider.IsTouchingLayers(enemyLayer))
         {
             Flip();
         }

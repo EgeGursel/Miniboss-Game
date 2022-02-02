@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
             jump = true;
         }
 
-        if (gameObject.transform.position.y < -24)
+        if (gameObject.transform.position.y < -18)
         {
             Die();
         }

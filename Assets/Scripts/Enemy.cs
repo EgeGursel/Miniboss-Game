@@ -19,6 +19,8 @@ public class Enemy : MonoBehaviour
 
     // DROP
     public Transform soulPrefab;
+    public Transform coinPrefab;
+    private Vector3 dropPos;
 
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,19 @@ public class Enemy : MonoBehaviour
     {
         hurtPS.transform.position = transform.position;
         hurtPS.Play();
-        Instantiate(soulPrefab, transform.position, transform.rotation);
+        if (gameObject.name.StartsWith("Slime"))
+        {
+            Instantiate(soulPrefab, transform.position, transform.rotation);
+        }
+        else if (gameObject.name.StartsWith("Wizard"))
+        {
+            dropPos = new Vector3(transform.position.x - 2.5f, transform.position.y, transform.position.z);
+            for (int i = 0; i < 6; i++)
+            {
+                Instantiate(coinPrefab, dropPos, transform.rotation);
+                dropPos.x += 0.5f;
+            }
+        }
         gameObject.SetActive(false);
     }
     private void OnTriggerEnter2D(Collider2D collision)
