@@ -11,13 +11,11 @@ public class Shop : MonoBehaviour
     private GameObject dmgLogo;
     private GameObject sLogo;
 
-    // Start is called before the first frame update
     void Start()
     {
         sbLogo = uIUpgrades.transform.GetChild(0).gameObject;
         dmgLogo = uIUpgrades.transform.GetChild(1).gameObject;
         sLogo = uIUpgrades.transform.GetChild(2).gameObject;
-        CheckAvailability();
     }
     public void BuySB()
     {
@@ -44,13 +42,16 @@ public class Shop : MonoBehaviour
     {
         foreach (Button button in GetComponentsInChildren<Button>())
         {
-            if (PlayerPrefs.GetInt("Coins") < int.Parse(button.GetComponentInChildren<Text>().text))
+            if (button.name != "CloseButton")
             {
-                button.interactable = false;
-            }
-            else
-            {
-                button.interactable = true;
+                if (PlayerPrefs.GetInt("Coins") < int.Parse(button.GetComponentInChildren<Text>().text))
+                {
+                    button.interactable = false;
+                }
+                else
+                {
+                    button.interactable = true;
+                }
             }
         }
     }

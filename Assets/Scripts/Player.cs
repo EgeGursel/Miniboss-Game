@@ -130,11 +130,25 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        light2D.color = Color.red;
         hurtPS.transform.position = transform.position;
         hurtPS.Play();
-        coins.AddCoins(-playerPickUp.levelCoinCount);
-        souls.AddSouls(-playerPickUp.levelSoulCount);
+        if (PlayerPrefs.GetInt("Coins") >= playerPickUp.levelCoinCount)
+        {
+            coins.AddCoins(-playerPickUp.levelCoinCount);
+        }
+        else
+        {
+            coins.AddCoins(PlayerPrefs.GetInt("Coins"));
+        }
+        if (PlayerPrefs.GetInt("SoulFragments") >= playerPickUp.levelSoulCount)
+        {
+            souls.AddSouls(-playerPickUp.levelSoulCount);
+        }
+        else
+        {
+            souls.AddSouls(-PlayerPrefs.GetInt("SoulFragments"));
+        }
+
         if (SceneManager.GetActiveScene().name == "Level 2")
         {
             PlayerPrefs.SetInt("DashActive", 0);

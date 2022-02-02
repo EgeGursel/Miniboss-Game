@@ -24,7 +24,7 @@ public class Coins : MonoBehaviour
     {
         if (gameObject.name == "CoinText")
         {
-            PlayerPrefs.SetInt("Coins", (PlayerPrefs.GetInt("Coins") + addedCoins));
+            PlayerPrefs.SetInt("Coins", ((PlayerPrefs.GetInt("Coins") + addedCoins)));
             text.text = PlayerPrefs.GetInt("Coins").ToString();
         }
         

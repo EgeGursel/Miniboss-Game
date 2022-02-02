@@ -19,6 +19,19 @@ public class PlayerAttack : MonoBehaviour
             Attack();
         }
     }
+    public void CheckWeapons()
+    {
+        if (PlayerPrefs.GetInt("Katana") == 1)
+        {
+            transform.GetChild(1).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.SetActive(true);
+        }
+        else if (PlayerPrefs.GetInt("Bow") == 1)
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(true);
+        }
+    }
     IEnumerator AttackCooldown()
     {
         attackCD = false;

@@ -16,7 +16,6 @@ public class RangedWeapon : MonoBehaviour
     Vector3 objectPos;
     float angle;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -56,12 +55,11 @@ public class RangedWeapon : MonoBehaviour
         }
         else
         {
-            if ( angle < 60 && angle > -60)
+            if (angle < 60 && angle > -60)
             {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
             }
         }
-        
     }
     IEnumerator AttackCooldown()
     {
@@ -71,11 +69,7 @@ public class RangedWeapon : MonoBehaviour
     }
     void Shoot()
     {
-        
-        {
-            Instantiate(arrowPrefab, firePoint.position, transform.rotation);
-
-        }
+        Instantiate(arrowPrefab, firePoint.position, transform.rotation);
         animator.SetTrigger("Attack");
         StartCoroutine(AttackCooldown());
     }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     public ParticleSystem impactPS;
-    public LayerMask enemyLayer;
-    public int attackDamage = 25;
+    int attackDamage = 40;
     public float speed = 20f;
     Rigidbody2D rb;
     // Start is called before the first frame update
@@ -22,7 +21,7 @@ public class Arrow : MonoBehaviour
         {
             return;
         }
-        else if (collision.gameObject.layer == enemyLayer)
+        else if (collision.gameObject.CompareTag("Enemy"))
         {
             try
             {

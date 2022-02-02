@@ -6,30 +6,35 @@ using UnityEngine.UI;
 public class WeaponShop : MonoBehaviour
 {
     public Coins souls;
-    // Start is called before the first frame update
-    void Start()
+    PlayerAttack playerAttack;
+    private void Start()
     {
-        CheckAvailability();
+        playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
+        souls.AddSouls(25);
     }
     public void BuyBow()
     {
         souls.AddSouls(-15);
         PlayerPrefs.SetInt("Bow", 1);
         PlayerPrefs.SetInt("Katana", 0);
+        playerAttack.CheckWeapons();
         CheckAvailability();
     }
     public void CheckAvailability()
     {
         foreach (Button button in GetComponentsInChildren<Button>())
         {
-            if (PlayerPrefs.GetInt("SoulsFragments") < int.Parse(button.GetComponentInChildren<Text>().text))
+            if (button.name != "CloseButton")
             {
-                button.interactable = false;
-            }
-            else
-            {
-                button.interactable = true;
-            }
+                if (PlayerPrefs.GetInt("SoulsFragments") < int.Parse(button.GetComponentInChildren<Text>().text))
+                {
+                    button.interactable = false;
+                }
+                else
+                {
+                    button.interactable = true;
+                }
+            } 
         }
     }
 }

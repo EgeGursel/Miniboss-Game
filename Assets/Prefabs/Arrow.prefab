@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1198173149499677586}
   - component: {fileID: 8227769795411750550}
   - component: {fileID: 1421631475898035233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -136,9 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impactPS: {fileID: 900744269628566678, guid: e44bd2e011fee4e45bb9a71badef9234, type: 3}
-  enemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
   attackDamage: 25
   speed: 18
 --- !u!114 &1421631475898035233
