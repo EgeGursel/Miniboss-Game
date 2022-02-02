@@ -29,7 +29,7 @@ public class Player : MonoBehaviour
     PlayerDash playerDash;
     public CharacterController2D controller;
     public float runSpeed = 26f;
-    float horizontalMove = 0f;
+    public float horizontalMove = 0f;
     bool jump = false;
 
     private void Start()
