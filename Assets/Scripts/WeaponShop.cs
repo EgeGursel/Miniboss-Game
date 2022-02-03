@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponShop : MonoBehaviour
 {
-    public Coins souls;
+    public Souls souls;
     PlayerAttack playerAttack;
     private Button[] shopButtons;
     private void Start()

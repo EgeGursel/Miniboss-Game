@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2823526373689813736}
   - component: {fileID: 2823526373689813737}
   - component: {fileID: 2823526373689813739}
-  - component: {fileID: 6022539577128437492}
+  - component: {fileID: 3985574427343093120}
   m_Layer: 5
   m_Name: CoinText
   m_TagString: CoinCounter
@@ -96,7 +96,7 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 1, y: -1}
   m_UseGraphicAlpha: 1
---- !u!114 &6022539577128437492
+--- !u!114 &3985574427343093120
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -105,6 +105,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2823526373689813735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa5c8db9cd2e30047bf5f42a06a0bc6e, type: 3}
+  m_Script: {fileID: 11500000, guid: aca6e40b49758e243a84e0a731916d9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

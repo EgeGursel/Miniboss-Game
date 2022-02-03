@@ -342,8 +342,9 @@ GameObject:
   - component: {fileID: 1858775896}
   - component: {fileID: 1858775898}
   - component: {fileID: 1858775897}
+  - component: {fileID: 1858775899}
   m_Layer: 5
-  m_Name: Text
+  m_Name: LoreText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -365,7 +366,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 18}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 290, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1858775897
@@ -395,13 +396,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: continue
+  m_Text: 
 --- !u!222 &1858775898
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -410,6 +411,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858775895}
   m_CullTransparentMesh: 1
+--- !u!114 &1858775899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858775895}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a7300f69466c2345b97c8012c6b2c23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneLoader: {fileID: 692227044}
+  strings:
+  - You are a brave crewmate who was separated from the love of his life, Orange,
+    after the impostor atrociously kidnapped her and imprisoned her in his dungeon.
+  - "Your objective is to overcome the obstacles and enemies that protect the impostor\u2019s
+    grand dungeon, and save the love of your life from the hands of the cruel impostor!"
+  - "The dungeon, however, is very safeguarded. It won\u2019t be easy to get in,
+    but you can do it. Never give up warrior!"
+  continueButton: {fileID: 1891362806}
 --- !u!1 &1891362802
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,9 +556,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 692227044}
-        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
-        m_MethodName: LoadNextScene
+      - m_Target: {fileID: 1858775899}
+        m_TargetAssemblyTypeName: Lore, Assembly-CSharp
+        m_MethodName: DisplayNextSentence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

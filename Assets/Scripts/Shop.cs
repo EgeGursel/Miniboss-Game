@@ -18,27 +18,25 @@ public class Shop : MonoBehaviour
         sbLogo = uIUpgrades.transform.GetChild(0).gameObject;
         dmgLogo = uIUpgrades.transform.GetChild(1).gameObject;
         sLogo = uIUpgrades.transform.GetChild(2).gameObject;
+        UpdateVisuals();
     }
     public void BuySB()
     {
         coins.AddCoins(-15);
         PlayerPrefs.SetFloat("RunSpeed", PlayerPrefs.GetFloat("RunSpeed") + 0.2f);
         CheckAvailability();
-        sbLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
     }
     public void BuyDMG()
     {
         coins.AddCoins(-20);
         PlayerPrefs.SetFloat("AttackDamage", PlayerPrefs.GetFloat("AttackDamage") + 0.2f);
         CheckAvailability();
-        dmgLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
     }
     public void BuyShield()
     {
         coins.AddCoins(-30);
         PlayerPrefs.SetFloat("Shield", PlayerPrefs.GetFloat("Shield") + 0.2f);
         CheckAvailability();
-        sLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
     public void CheckAvailability()
     {
@@ -56,6 +54,13 @@ public class Shop : MonoBehaviour
                 }
             }
         }
+        UpdateVisuals();
+    }
+    public void UpdateVisuals()
+    {
+        uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
+        uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
+        uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
     private void OnEnable()
     {

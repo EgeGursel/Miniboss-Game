@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerPickUp : MonoBehaviour
 {
     Coins coins;
-    Coins souls;
+    Souls souls;
     Player player;
     public int levelSoulCount = 0;
     public int levelCoinCount = 0;
@@ -17,7 +17,7 @@ public class PlayerPickUp : MonoBehaviour
     {
         player = GetComponent<Player>();
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
-        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
+        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Souls>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

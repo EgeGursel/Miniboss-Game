@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Coins : MonoBehaviour
 {
-    Text text;
+    private Text text;
 
     // Start is called before the first frame update
     void Start()
@@ -15,30 +15,11 @@ public class Coins : MonoBehaviour
     }
     public void AddCoins(int addedCoins)
     {
-        if (gameObject.name == "CoinText")
-        {
-            PlayerPrefs.SetInt("Coins", ((PlayerPrefs.GetInt("Coins") + addedCoins)));
-            UpdateVisuals();
-        }
-        
-    }
-    public void AddSouls(int addedSouls)
-    {
-        if(gameObject.name == "SoulText")
-        {
-            PlayerPrefs.SetInt("SoulFragments", (PlayerPrefs.GetInt("SoulFragments") + addedSouls));
-            UpdateVisuals();
-        }
+        PlayerPrefs.SetInt("Coins", ((PlayerPrefs.GetInt("Coins") + addedCoins)));
+        UpdateVisuals();        
     }
     private void UpdateVisuals()
     {
-        if (gameObject.name == "CoinText")
-        {
-            text.text = PlayerPrefs.GetInt("Coins").ToString();
-        }
-        else if (gameObject.name == "SoulText")
-        {
-            text.text = PlayerPrefs.GetInt("SoulFragments").ToString();
-        }
+        text.text = PlayerPrefs.GetInt("Coins").ToString();
     }
 }

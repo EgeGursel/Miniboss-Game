@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     void Update()
     {
-        if (Time.timeScale == 0 || dBox.transform.localPosition.y == -45)
+        if (Time.timeScale == 0 || dBox.transform.localPosition.y > -130)
         {
             return;
         }

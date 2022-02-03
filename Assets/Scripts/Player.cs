@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     // COINS & SOULS
     PlayerPickUp playerPickUp;
     Coins coins;
-    Coins souls;
+    Souls souls;
 
     // ANIMATIONS & SCENE & DIALOGUE MANAGEMENT
     public ParticleSystem hurtPS;
@@ -36,7 +36,7 @@ public class Player : MonoBehaviour
     {
         dBox = GameObject.FindWithTag("DBox");
         playerPickUp = GetComponent<PlayerPickUp>();
-        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
+        souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Souls>();
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
         playerDash = GetComponent<PlayerDash>();
         PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name); 
@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f || dBox.transform.localPosition.y == -45)
+        if (Time.timeScale == 0f || dBox.transform.localPosition.y > -130)
         {
             return;
         }
