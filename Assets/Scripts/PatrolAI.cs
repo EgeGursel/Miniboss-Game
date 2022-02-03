@@ -15,26 +15,16 @@ public class PatrolAI : MonoBehaviour
     public bool mustPatrol;
     private bool mustFlip;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         mustPatrol = true;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (mustPatrol)
-        {
-            Patrol();
-
-        }
-    }
     private void FixedUpdate()
     {
         if (mustPatrol)
         {
+            Patrol();
             mustFlip = !Physics2D.OverlapCircle(groundCheck.position, 0.1f, collidableLayer);
         }
     }

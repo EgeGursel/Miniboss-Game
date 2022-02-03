@@ -24,7 +24,7 @@ public class Portals : MonoBehaviour
         else if (collision.CompareTag("Player") && GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
         {
             infoBar.SetActive(true);    
-            InfoBarManager.instance.SendSpecial("Kill the enemies!", "");
+            InfoBarManager.instance.SendSpecial("Kill all the enemies first!", "");
         }
     }
 }

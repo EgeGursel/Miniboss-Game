@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerPickUp : MonoBehaviour
 {
@@ -23,68 +22,67 @@ public class PlayerPickUp : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Collectable"))
+        if (collision.CompareTag("Collectable"))
         {
-            return;
-        }
+            string collectableName = collision.gameObject.name;
+            Destroy(collision.gameObject);
 
-        string collectableName = collision.gameObject.name;
-        Destroy(collision.gameObject);
-
-        // NON-VISUAL COLLECTABLES
-        if (collectableName == "Dash Ability")
-        {
-            PlayerPrefs.SetInt("DashActive", 1);
-        }
-        else if (collectableName == "Candy")
-        {
-            boss.SetActive(true);
-            return;
-        }
-        else if (collectableName.StartsWith("Coin"))
-        {
-            levelCoinCount += 1;
-            coins.AddCoins(1);
-            if (PlayerPrefs.GetInt("Coins") == 15)
+            // NON-VISUAL COLLECTABLES
+            if (collectableName == "Dash Ability")
             {
-                shopOneSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
+                PlayerPrefs.SetInt("DashActive", 1);
             }
-            return;
-        }
-        else if (collectableName.StartsWith("Soul Fragment"))
-        {
-            levelSoulCount += 1;
-            souls.AddSouls(1);
-            if (PlayerPrefs.GetInt("SoulFragments") == 15)
+            else if (collectableName == "Candy")
             {
-                shopTwoSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
+                boss.SetActive(true);
+                return;
             }
-            return;
-        }
-        else if (collectableName.StartsWith("Health"))
-        {
-            player.Heal(25);
-            return;
-        }
-        // VISUAL COLLECTABLES
-        else
-        {
-
-            foreach (Transform child in transform)
+            else if (collectableName.StartsWith("Coin"))
             {
-                if (collectableName == child.name)
+                levelCoinCount += 1;
+                coins.AddCoins(1);
+                if (PlayerPrefs.GetInt("Coins") == 15)
                 {
-                    child.gameObject.SetActive(true);
-                    PlayerPrefs.SetInt(collectableName, 1);
+                    shopOneSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
                 }
-                else
+                return;
+            }
+            else if (collectableName.StartsWith("Soul Fragment"))
+            {
+                levelSoulCount += 1;
+                souls.AddSouls(1);
+                if (PlayerPrefs.GetInt("SoulFragments") == 15)
                 {
-                    child.gameObject.SetActive(false);
-                    PlayerPrefs.SetInt(child.name, 0);
+                    shopTwoSymbol.GetComponent<Animator>().SetTrigger("Highlighted");
+                }
+                return;
+            }
+            else if (collectableName.StartsWith("Health"))
+            {
+                player.Heal(25);
+                return;
+            }
+
+            // VISUAL COLLECTABLES
+            else
+            {
+
+                foreach (Transform child in transform)
+                {
+                    if (collectableName == child.name)
+                    {
+                        child.gameObject.SetActive(true);
+                        PlayerPrefs.SetInt(collectableName, 1);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(false);
+                        PlayerPrefs.SetInt(child.name, 0);
+                    }
                 }
             }
+            infoBar.SetActive(true);
+            InfoBarManager.instance.SendInfoBar(collectableName);
         }
-        infoBar.SetActive(true);
-        InfoBarManager.instance.SendInfoBar(collectableName);
     }
 }

@@ -12,13 +12,13 @@ public class Player : MonoBehaviour
     Coins coins;
     Coins souls;
 
-    // ANIMATIONS & SCENE MANAGEMENT
-    Light2D light2D;
+    // ANIMATIONS & SCENE & DIALOGUE MANAGEMENT
     public ParticleSystem hurtPS;
     public GameObject sceneLoader;
     public ParticleSystem dust;
     public Animator playerAnimator;
     public GameObject uIUpgrades;
+    private GameObject dBox;
 
     // HEALTH
     public int maxHealth = 100;
@@ -34,30 +34,15 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        dBox = GameObject.FindWithTag("DBox");
         playerPickUp = GetComponent<PlayerPickUp>();
         souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Coins>();
         coins = GameObject.FindGameObjectWithTag("CoinCounter").GetComponent<Coins>();
-        light2D = GetComponent<Light2D>();
         playerDash = GetComponent<PlayerDash>();
         PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name); 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(currentHealth);
 
-        if (!(PlayerPrefs.GetFloat("RunSpeed") > 0))
-        {
-            PlayerPrefs.SetFloat("RunSpeed", 1);
-        }
-        if (!(PlayerPrefs.GetFloat("AttackDamage") > 0))
-        {
-            PlayerPrefs.SetFloat("AttackDamage", 1);
-        }
-        if (!(PlayerPrefs.GetFloat("Shield") > 0))
-        {
-            PlayerPrefs.SetFloat("Shield", 1);
-        }
-        uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
-        uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
-        uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
 
         if (PlayerPrefs.GetInt("Katana") == 1)
         {
@@ -70,7 +55,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f)
+        if (Time.timeScale == 0f || dBox.transform.localPosition.y == -45)
         {
             return;
         }
@@ -138,7 +123,7 @@ public class Player : MonoBehaviour
         }
         else
         {
-            coins.AddCoins(PlayerPrefs.GetInt("Coins"));
+            coins.AddCoins(-PlayerPrefs.GetInt("Coins"));
         }
         if (PlayerPrefs.GetInt("SoulFragments") >= playerPickUp.levelSoulCount)
         {
@@ -155,6 +140,12 @@ public class Player : MonoBehaviour
         }
         sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
         gameObject.SetActive(false);
+    }
+    private void Deleted()
+    {
+        uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
+        uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
+        uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
 }
 

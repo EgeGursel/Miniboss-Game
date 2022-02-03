@@ -20,7 +20,13 @@ public class Buttons : MonoBehaviour
     public void ResetGame()
     {
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetInt("Coins", 0);
+        PlayerPrefs.SetInt("SoulFragments", 0);
+        PlayerPrefs.SetFloat("RunSpeed", 1);
+        PlayerPrefs.SetFloat("AttackDamage", 1);
+        PlayerPrefs.SetFloat("Shield", 1);
     }
+
     public void Quit()
     {
         Application.Quit();

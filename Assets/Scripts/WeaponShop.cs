@@ -7,10 +7,11 @@ public class WeaponShop : MonoBehaviour
 {
     public Coins souls;
     PlayerAttack playerAttack;
+    private Button[] shopButtons;
     private void Start()
     {
         playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
-        souls.AddSouls(25);
+        shopButtons = GetComponentsInChildren<Button>();
     }
     public void BuyBow()
     {
@@ -36,5 +37,9 @@ public class WeaponShop : MonoBehaviour
                 }
             } 
         }
+    }
+    private void OnEnable()
+    {
+        CheckAvailability();
     }
 }

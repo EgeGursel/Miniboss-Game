@@ -312,11 +312,15 @@ PrefabInstance:
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 302288508}
+    - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: attackDamage
       value: 20
@@ -1345,6 +1349,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
+--- !u!198 &596905326 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7660694112356785380, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
+  m_PrefabInstance: {fileID: 596905325}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &623486060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1531,11 +1540,15 @@ PrefabInstance:
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 302288508}
+    - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: attackDamage
       value: 20
@@ -1633,11 +1646,15 @@ PrefabInstance:
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 302288508}
+    - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: attackDamage
       value: 20
@@ -25695,11 +25712,15 @@ PrefabInstance:
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 302288508}
+    - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: attackDamage
       value: 20
@@ -25930,7 +25951,7 @@ PrefabInstance:
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 900744269628566678, guid: 19be0c7e70426794cb1bbea5c0e96b8b, type: 3}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: healthbar
       value: 
@@ -26477,11 +26498,15 @@ PrefabInstance:
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: hurtPS
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 596905326}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 302288508}
+    - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
+      propertyPath: coinPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8336650781832977417, guid: daab03adfc5eede4db84cb5d84d8702c, type: 3}
       propertyPath: attackDamage
       value: 20

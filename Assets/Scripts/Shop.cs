@@ -10,9 +10,11 @@ public class Shop : MonoBehaviour
     private GameObject sbLogo;
     private GameObject dmgLogo;
     private GameObject sLogo;
+    private Button[] shopButtons;
 
     void Start()
     {
+        shopButtons = GetComponentsInChildren<Button>();
         sbLogo = uIUpgrades.transform.GetChild(0).gameObject;
         dmgLogo = uIUpgrades.transform.GetChild(1).gameObject;
         sLogo = uIUpgrades.transform.GetChild(2).gameObject;
@@ -20,21 +22,21 @@ public class Shop : MonoBehaviour
     public void BuySB()
     {
         coins.AddCoins(-15);
-        PlayerPrefs.SetFloat("RunSpeed", PlayerPrefs.GetFloat("RunSpeed") * 1.2f);
+        PlayerPrefs.SetFloat("RunSpeed", PlayerPrefs.GetFloat("RunSpeed") + 0.2f);
         CheckAvailability();
         sbLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
     }
     public void BuyDMG()
     {
         coins.AddCoins(-20);
-        PlayerPrefs.SetFloat("AttackDamage", PlayerPrefs.GetFloat("AttackDamage") * 1.2f);
+        PlayerPrefs.SetFloat("AttackDamage", PlayerPrefs.GetFloat("AttackDamage") + 0.2f);
         CheckAvailability();
         dmgLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
     }
     public void BuyShield()
     {
         coins.AddCoins(-30);
-        PlayerPrefs.SetFloat("Shield", PlayerPrefs.GetFloat("Shield") * 1.2f);
+        PlayerPrefs.SetFloat("Shield", PlayerPrefs.GetFloat("Shield") + 0.2f);
         CheckAvailability();
         sLogo.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
@@ -54,5 +56,9 @@ public class Shop : MonoBehaviour
                 }
             }
         }
+    }
+    private void OnEnable()
+    {
+        CheckAvailability();
     }
 }

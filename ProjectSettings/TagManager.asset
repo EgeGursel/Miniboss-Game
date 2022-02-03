@@ -11,6 +11,7 @@ TagManager:
   - CoinCounter
   - Enemy
   - SoulCounter
+  - DBox
   layers:
   - Default
   - TransparentFX

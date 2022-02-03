@@ -4,19 +4,47 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
-    public Transform attackArea;
-    public float attackRange;
+    // ATTACK
     public LayerMask enemyLayer;
-    public int attackDamage = 15;
     public float attackCooldown = 0.4f;
     private bool attackCD = true;
-    public Animator weaponAnimator;
+    private GameObject dBox;
+
+    // MELEE
+    public Transform attackArea;
+    public float attackRange;
+    public int attackDamage = 30;
+    public Animator meleeAnimator;
+
+    // RANGED
+    public Transform bow;
+    public Transform firePoint;
+    public Animator rangedAnimator;
+    public GameObject arrowPrefab;
+
+    // ROTATE AIM DIRECTION (RANGED)
+    private Vector3 mousePos;
+    private Vector3 objectPos;
+    private float angle;
+
+    private void Start()
+    {
+        dBox = GameObject.FindWithTag("DBox");
+    }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Katana") == 1 && Time.timeScale == 1f)
+        if (Time.timeScale == 0 || dBox.transform.localPosition.y == -45)
+        {
+            return;
+        }
+        if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Katana") == 1)
         {
             Attack();
+        }
+        else if (Input.GetButtonDown("Fire1") && PlayerPrefs.GetInt("Bow") == 1)
+        {
+            Shoot();
         }
     }
     public void CheckWeapons()
@@ -38,11 +66,11 @@ public class PlayerAttack : MonoBehaviour
         yield return new WaitForSeconds(attackCooldown);
         attackCD = true;
     }
-    void Attack()
+    private void Attack()
     {
         if (attackCD)
         {
-            if (weaponAnimator.gameObject.name == "Katana")
+            if (meleeAnimator.gameObject.name == "Katana")
             {
                 // DETECT ENEMIES IN RANGE OF ATTACK
                 Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
@@ -53,8 +81,17 @@ public class PlayerAttack : MonoBehaviour
                     enemy.GetComponent<Enemy>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
             }
-            weaponAnimator.SetTrigger("Attack");
+            meleeAnimator.SetTrigger("Attack");
             CameraShake.Instance.Shake(2f, .16f);
+            StartCoroutine(AttackCooldown());
+        }
+    }
+    private void Shoot()
+    {
+        if (attackCD)
+        {
+            Instantiate(arrowPrefab, firePoint.position, bow.rotation);
+            rangedAnimator.SetTrigger("Attack");
             StartCoroutine(AttackCooldown());
         }
     }

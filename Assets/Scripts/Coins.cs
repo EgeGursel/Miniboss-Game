@@ -11,21 +11,14 @@ public class Coins : MonoBehaviour
     void Start()
     {
         text = GetComponent<Text>();
-        if (gameObject.name == "CoinText")
-        {
-            text.text = PlayerPrefs.GetInt("Coins").ToString();
-        }
-        else if (gameObject.name == "SoulText")
-        {
-            text.text = PlayerPrefs.GetInt("SoulFragments").ToString();
-        }
+        UpdateVisuals();
     }
     public void AddCoins(int addedCoins)
     {
         if (gameObject.name == "CoinText")
         {
             PlayerPrefs.SetInt("Coins", ((PlayerPrefs.GetInt("Coins") + addedCoins)));
-            text.text = PlayerPrefs.GetInt("Coins").ToString();
+            UpdateVisuals();
         }
         
     }
@@ -34,6 +27,17 @@ public class Coins : MonoBehaviour
         if(gameObject.name == "SoulText")
         {
             PlayerPrefs.SetInt("SoulFragments", (PlayerPrefs.GetInt("SoulFragments") + addedSouls));
+            UpdateVisuals();
+        }
+    }
+    private void UpdateVisuals()
+    {
+        if (gameObject.name == "CoinText")
+        {
+            text.text = PlayerPrefs.GetInt("Coins").ToString();
+        }
+        else if (gameObject.name == "SoulText")
+        {
             text.text = PlayerPrefs.GetInt("SoulFragments").ToString();
         }
     }

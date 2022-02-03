@@ -23,12 +23,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2301149786614873892}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.65499973, y: 0, z: 0}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children: []
-  m_Father: {fileID: 1687901671562860412}
-  m_RootOrder: 1
+  m_Father: {fileID: 8883836317394405958}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6650428740230881490
 GameObject:
@@ -5237,15 +5237,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a6c60318356924f9b98f6e11704386, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackArea: {fileID: 2561272835462112214}
-  attackRange: 0.69
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  attackDamage: 15
   attackCooldown: 0.4
-  weaponAnimator: {fileID: 7527583855663428600}
-  cursorTexture: {fileID: 2800000, guid: 3cfa9c2c3dd943b43a045b82304b751c, type: 3}
+  attackArea: {fileID: 2561272835462112214}
+  attackRange: 0.69
+  attackDamage: 15
+  meleeAnimator: {fileID: 7527583855663428600}
+  bow: {fileID: 1687901671562860412}
+  firePoint: {fileID: 7551119831000718089}
+  rangedAnimator: {fileID: 6638636749852822255}
+  arrowPrefab: {fileID: 1198173149499677590, guid: 32f0e52d66e7f2240b8daec649c37ef7, type: 3}
 --- !u!114 &7527583855348200435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5498,7 +5501,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1687901671562860412}
-  - component: {fileID: 6400251894315475432}
+  - component: {fileID: 727815054411254856}
   m_Layer: 6
   m_Name: Bow
   m_TagString: Weapon
@@ -5518,11 +5521,10 @@ Transform:
   m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_Children:
   - {fileID: 7532675437151032716}
-  - {fileID: 7551119831000718089}
   m_Father: {fileID: 7527583855348200445}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6400251894315475432
+--- !u!114 &727815054411254856
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5531,11 +5533,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 7657629114268128430}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed42f7872085a24cbec5d6209a6afb6, type: 3}
+  m_Script: {fileID: 11500000, guid: 011fc5a300c77a54fbda6c522619d779, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arrowPrefab: {fileID: 1198173149499677590, guid: 32f0e52d66e7f2240b8daec649c37ef7, type: 3}
-  attackCooldown: 0.5
 --- !u!1 &8883836317394405959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5566,6 +5566,7 @@ Transform:
   - {fileID: 7527583854714432193}
   - {fileID: 7527583854664460620}
   - {fileID: 2561272835462112214}
+  - {fileID: 7551119831000718089}
   m_Father: {fileID: 7527583855348200445}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
