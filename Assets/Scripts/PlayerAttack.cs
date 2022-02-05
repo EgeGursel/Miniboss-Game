@@ -22,11 +22,6 @@ public class PlayerAttack : MonoBehaviour
     public Animator rangedAnimator;
     public GameObject arrowPrefab;
 
-    // ROTATE AIM DIRECTION (RANGED)
-    private Vector3 mousePos;
-    private Vector3 objectPos;
-    private float angle;
-
     private void Start()
     {
         dBox = GameObject.FindWithTag("DBox");
@@ -70,15 +65,20 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCD)
         {
-            if (meleeAnimator.gameObject.name == "Katana")
-            {
-                // DETECT ENEMIES IN RANGE OF ATTACK
-                Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
+            AudioManager.instance.Play("meleeattack");
+            // DETECT ENEMIES IN RANGE OF ATTACK
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackArea.position, attackRange, enemyLayer);
 
-                // DAMAGE ENEMIES
-                foreach (Collider2D enemy in hitEnemies)
+            // DAMAGE ENEMIES
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                try
                 {
                     enemy.GetComponent<Enemy>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
+                }
+                catch
+                {
+                    enemy.GetComponent<Boss>().Damage(Mathf.RoundToInt(attackDamage * PlayerPrefs.GetFloat("AttackDamage")));
                 }
             }
             meleeAnimator.SetTrigger("Attack");
@@ -90,6 +90,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackCD)
         {
+            AudioManager.instance.Play("rangedattack");
             Instantiate(arrowPrefab, firePoint.position, bow.rotation);
             rangedAnimator.SetTrigger("Attack");
             StartCoroutine(AttackCooldown());

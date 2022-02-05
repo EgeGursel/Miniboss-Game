@@ -42,8 +42,8 @@ public class Enemy : MonoBehaviour
     }
     public void Die()
     {
-        hurtPS.transform.position = transform.position;
-        hurtPS.Play();
+        Instantiate(hurtPS, transform.position, transform.rotation);
+        AudioManager.instance.Play("enemydeath");
         if (gameObject.name.StartsWith("Slime"))
         {
             Instantiate(soulPrefab, transform.position, transform.rotation);

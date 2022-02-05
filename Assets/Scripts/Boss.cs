@@ -6,28 +6,25 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class Boss : MonoBehaviour
 {
 	// HEALTH
-	public int maxHealth = 600;
+	public int maxHealth = 800;
 	public int currentHealth;
 	public BossHealthBar bossHealthbar;
-	public bool isDead = false;
+	private bool isEnraged = false;
 
 	// ANIMATIONS & SCENE MANAGEMENT
 	private Light2D light2D;
-	public bool bossDefeated = false;
-	private SpriteRenderer spriteRenderer;
 	public ParticleSystem lightParticles;
-	public ParticleSystem explosionParticles;
 	public ParticleSystem enrageParticles;
-	public ParticleSystem hurtParticles;
-	public Transform player;
-	public Animator bossAnimator;
+	private Transform player;
+	private Animator animator;
     public bool isFlipped = true;
+	public Transform keyPrefab;
 
 	private void Start()
     {
-		bossAnimator.SetFloat("attackSpeed", 1f);
-		bossAnimator.SetFloat("walkSpeed", 1f);
-		spriteRenderer = GetComponent<SpriteRenderer>();
+		animator = GetComponent<Animator>();
+		player = GameObject.FindGameObjectWithTag("Player").transform;
+		animator.SetFloat("walkSpeed", PlayerPrefs.GetFloat("RunSpeed"));
 		light2D = GetComponent<Light2D>();
 		currentHealth = maxHealth;
 		bossHealthbar.gameObject.SetActive(true);
@@ -54,24 +51,26 @@ public class Boss : MonoBehaviour
 	}
 	public void Damage(int damage)
 	{
+		animator.SetTrigger("Damaged");
 		currentHealth -= damage;
-		StartCoroutine(DamageVisuals());
 		bossHealthbar.SetHealth(currentHealth);
 
-		if (currentHealth <= (maxHealth/2))
+		if (currentHealth <= (maxHealth/2) && !isEnraged)
         {
 			Enrage();
+			isEnraged = true;
 		}
 		
 		if (currentHealth <= 0)
 		{
-			isDead = true;
 			Die();
 		}
 	}
 	public void Die()
 	{
-		AfterDeath();
+		Instantiate(keyPrefab, transform.position, transform.rotation);
+		EndingManager.instance.BossDead();
+		gameObject.SetActive(false);
 	}
 
 	public void AttackShakeCamera()
@@ -79,51 +78,24 @@ public class Boss : MonoBehaviour
 		CameraShake.Instance.Shake(3f, .4f);
 	}
 
-	private void AfterDeath()
-    {
-		ExplosionParticles();
-		gameObject.SetActive(false);
-	}
-
 	private IEnumerator StartBossAnim()
     {
-		GlowParticles();
+		lightParticles.Play();
 		CameraShake.Instance.Shake(3f, 2f);
 		yield return new WaitForSeconds(2f);
-		bossAnimator.SetTrigger("Moving");
+		animator.SetTrigger("Moving");
 	}
-
-	public void GlowParticles()
-    {
-		lightParticles.Play();
-	}
-
-	public void ExplosionParticles()
-    {
-		explosionParticles.transform.position = gameObject.transform.position;
-		explosionParticles.Play();
-    }
-
 	public void Enrage()
     {
 		EnrageVisuals();
-		bossAnimator.SetFloat("attackSpeed", 2f);
-		bossAnimator.SetFloat("walkSpeed", 1.5f);
-		bossAnimator.GetBehaviour<Boss_Walk>().speed = 5f;
+		animator.SetFloat("attackSpeed", animator.GetFloat("attackSpeed")+2);
+		animator.SetFloat("walkSpeed", animator.GetFloat("walkSpeed")+1.5f);
+		animator.GetBehaviour<Boss_Walk>().speed *= 1.5f;
 	}
-
 	private void EnrageVisuals()
     {
 		enrageParticles.Play();
 		light2D.color = Color.red;
-		light2D.intensity = 2f;
+		light2D.intensity = 2.5f;
     }
-
-	private IEnumerator DamageVisuals()
-	{
-		spriteRenderer.color = Color.red;
-		hurtParticles.Play();
-		yield return new WaitForSeconds(0.15f);
-		spriteRenderer.color = Color.white;
-	}
 }

@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1576956758296810136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1576956758296810086}
+  - component: {fileID: 1576956758296810137}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1576956758296810086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576956758296810136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.0401956, y: 1.277551, z: -0.57924825}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1576956758296810137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1576956758296810136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89cb7e61c94234a4da036b820eff5619, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - clip: {fileID: 8300000, guid: aa1f39b9396d8b34dbae35603bfdb57b, type: 3}
+    name: jump
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 3aa8b2df7f4706f4ab87875955207280, type: 3}
+    name: pickup
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: f99adc6512b1a014ea361481998252f2, type: 3}
+    name: meleeattack
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: b812e0d5e9cd883468c0f6fc0b873de9, type: 3}
+    name: rangedattack
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: e3c450ce7eed01b46b591fd2f61b4898, type: 3}
+    name: talking
+    volume: 0.05
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: c42b5048338abbb438c21c7a07e538a8, type: 3}
+    name: enemydeath
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 7a9856c7f7a27a648933d9fe0d7cf976, type: 3}
+    name: gameover
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 4b5effacfa3926c429768b3a6b6b0b6f, type: 3}
+    name: explosion
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: fedbb5b358079954bb1eeedb9e3aeacb, type: 3}
+    name: playerhurt
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 8b482b41e2cbe23499c1eeb59a26d297, type: 3}
+    name: wizardattack
+    volume: 0.9
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 024ce617102d30c48a354e70c957463b, type: 3}
+    name: buttonclick
+    volume: 0.7
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: 5525d94922db76d4a97aa919978eb190, type: 3}
+    name: dash
+    volume: 0.2
+    pitch: 1.2
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: af839300e476f8b4bbdd3e4c4822ebec, type: 3}
+    name: projectilehit
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: a93a80b52f99c914897e9e687d82e758, type: 3}
+    name: theme
+    volume: 0.1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - clip: {fileID: 8300000, guid: dc09299cbd2c32447af5cfec656ed3cf, type: 3}
+    name: love
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}

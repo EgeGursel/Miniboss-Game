@@ -33,6 +33,7 @@ public class Arrow : MonoBehaviour
             }
         }
         Instantiate(impactPS, transform.position, transform.rotation);
+        AudioManager.instance.Play("projectilehit");
         CameraShake.Instance.Shake(2.5f, .16f);
         Destroy(gameObject);
     }

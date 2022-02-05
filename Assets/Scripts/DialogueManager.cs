@@ -5,13 +5,19 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
+	public bool isOpen = false;
+	public static DialogueManager instance;
 	private Text nameText;
 	private Button continueButton;
 	private Text dialogueText;
 	private Animator animator;
 	private Queue<string> sentences;
 
-	void Start()
+    private void Awake()
+    {
+        instance = this;
+    }
+    void Start()
 	{
 		nameText = transform.GetChild(0).GetComponent<Text>();
 		dialogueText = transform.GetChild(1).GetComponent<Text>();
@@ -21,6 +27,7 @@ public class DialogueManager : MonoBehaviour
 	}
 	public void StartDialogue(Dialogue dialogue)
 	{
+		isOpen = true;
 		animator.SetBool("IsOpen", true);
 		nameText.text = dialogue.name;
 		sentences.Clear();
@@ -44,16 +51,20 @@ public class DialogueManager : MonoBehaviour
 	IEnumerator TypeSentence(string sentence)
 	{
 		dialogueText.text = "";
+		AudioManager.instance.Play("talking");
 		continueButton.gameObject.SetActive(false);
 		foreach (char letter in sentence.ToCharArray())
 		{
 			dialogueText.text += letter;
 			yield return new WaitForSeconds(0.03f);
 		}
+		AudioManager.instance.Stop("talking");
 		continueButton.gameObject.SetActive(true);
 	}
 	void EndDialogue()
 	{
+		isOpen = false;
 		animator.SetBool("IsOpen", false);
+
     }
 }

@@ -11,8 +11,8 @@ public class PlayerPickUp : MonoBehaviour
     public int levelCoinCount = 0;
     public GameObject shopOneSymbol;
     public GameObject shopTwoSymbol;
-    public GameObject infoBar;
-    public GameObject boss;
+    public bool hasKey = false;
+
     private void Start()
     {
         player = GetComponent<Player>();
@@ -26,6 +26,7 @@ public class PlayerPickUp : MonoBehaviour
         {
             string collectableName = collision.gameObject.name;
             Destroy(collision.gameObject);
+            AudioManager.instance.Play("pickup");
 
             // NON-VISUAL COLLECTABLES
             if (collectableName == "Dash Ability")
@@ -34,7 +35,13 @@ public class PlayerPickUp : MonoBehaviour
             }
             else if (collectableName == "Candy")
             {
-                boss.SetActive(true);
+                return;
+            }
+            else if (collectableName.StartsWith("Key"))
+            {
+                hasKey = true;
+                InfoBarManager.instance.gameObject.SetActive(true);
+                InfoBarManager.instance.SendInfoBar("cell key");
                 return;
             }
             else if (collectableName.StartsWith("Coin"))
@@ -81,7 +88,7 @@ public class PlayerPickUp : MonoBehaviour
                     }
                 }
             }
-            infoBar.SetActive(true);
+            InfoBarManager.instance.gameObject.SetActive(true);
             InfoBarManager.instance.SendInfoBar(collectableName);
         }
     }

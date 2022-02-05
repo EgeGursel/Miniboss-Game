@@ -6,17 +6,30 @@ using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour
 {
-    public GameObject sceneLoader;
-
+    private void Start()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            try
+            {
+                AudioManager.instance.Stop("theme");
+                AudioManager.instance.Stop("love");
+            }
+            catch
+            {
+                return;
+            }
+        }
+    }
     public void Respawn()
     {
         try
         {
-            sceneLoader.GetComponent<SceneLoader>().Load(PlayerPrefs.GetString("Scene"));
+            SceneLoader.instance.Load(PlayerPrefs.GetString("Scene"));
         }
         catch
         {
-            sceneLoader.GetComponent<SceneLoader>().LoadNextScene();
+            SceneLoader.instance.LoadNextScene();
         }
     }
     public void ResetGame()
@@ -32,5 +45,10 @@ public class Buttons : MonoBehaviour
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void ButtonClick()
+    {
+        AudioManager.instance.Play("buttonclick");
     }
 }

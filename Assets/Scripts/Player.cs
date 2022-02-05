@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
 
     // ANIMATIONS & SCENE & DIALOGUE MANAGEMENT
     public ParticleSystem hurtPS;
-    public GameObject sceneLoader;
-    public ParticleSystem dust;
     public Animator playerAnimator;
     public GameObject uIUpgrades;
     private GameObject dBox;
@@ -27,6 +25,7 @@ public class Player : MonoBehaviour
 
     // MOVEMENT
     PlayerDash playerDash;
+    private Rigidbody2D rb;
     public CharacterController2D controller;
     public float runSpeed = 26f;
     public float horizontalMove = 0f;
@@ -34,6 +33,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
         dBox = GameObject.FindWithTag("DBox");
         playerPickUp = GetComponent<PlayerPickUp>();
         souls = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Souls>();
@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
         PlayerPrefs.SetString("Scene", SceneManager.GetActiveScene().name); 
         currentHealth = maxHealth;
         healthbar.SetMaxHealth(currentHealth);
-
 
         if (PlayerPrefs.GetInt("Katana") == 1)
         {
@@ -55,13 +54,27 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        if (Time.timeScale == 0f || dBox.transform.localPosition.y > -130)
+        if (Time.timeScale == 0f)
         {
             return;
         }
+
+        if (dBox.transform.localPosition.y > -130)
+        {
+            rb.velocity = Vector3.zero;
+            return;
+        }
+
         // PLAYER MOVEMENT
         horizontalMove = Input.GetAxisRaw("Horizontal") * (runSpeed * PlayerPrefs.GetFloat("RunSpeed"));
-        playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        if (!DialogueManager.instance.isOpen)
+        {
+            playerAnimator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+        }
+        else
+        {
+            playerAnimator.SetFloat("Speed", 0);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -79,20 +92,16 @@ public class Player : MonoBehaviour
         // PLAYER JUMP
         if (!playerDash.isDashing && Time.timeScale == 1f)
         {
-            controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
+            controller.Move(horizontalMove * Time.fixedDeltaTime, jump);
             jump = false;
         }
     }
-    public void CreateDust()
-    {
-        dust.Play();
-    }
-
     public void TakeDamage(int damage)
     {
         currentHealth -= Mathf.RoundToInt(damage / PlayerPrefs.GetFloat("Shield"));
         playerAnimator.SetTrigger("Damaged");
         CameraShake.Instance.Shake(2f, .16f);
+        AudioManager.instance.Play("playerhurt");
         healthbar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
@@ -115,8 +124,8 @@ public class Player : MonoBehaviour
     }
     public void Die()
     {
-        hurtPS.transform.position = transform.position;
-        hurtPS.Play();
+        Instantiate(hurtPS, transform.position, transform.rotation);
+        AudioManager.instance.Play("gameover");
         if (PlayerPrefs.GetInt("Coins") >= playerPickUp.levelCoinCount)
         {
             coins.AddCoins(-playerPickUp.levelCoinCount);
@@ -138,14 +147,8 @@ public class Player : MonoBehaviour
         {
             PlayerPrefs.SetInt("DashActive", 0);
         }
-        sceneLoader.GetComponent<SceneLoader>().Load("DeathScene");
+        SceneLoader.instance.Load("DeathScene");
         gameObject.SetActive(false);
-    }
-    private void Deleted()
-    {
-        uIUpgrades.transform.GetChild(0).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("RunSpeed");
-        uIUpgrades.transform.GetChild(1).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("AttackDamage");
-        uIUpgrades.transform.GetChild(2).gameObject.GetComponentInChildren<Text>().text = "X" + PlayerPrefs.GetFloat("Shield");
     }
 }
 

@@ -16,13 +16,14 @@ public class TriggerCollider : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             activateObject.SetActive(true);
-            StartCoroutine(Cutscene("Cutscene 1"));
+            StartCoroutine(Cutscene());
         }
     }
-    IEnumerator Cutscene(string boolName)
+    IEnumerator Cutscene()
     {
-        animator.SetBool(boolName, true);
+        animator.SetBool("Cutscene 1", true);
         yield return new WaitForSeconds(1.4f);
-        animator.SetBool(boolName, false);
+        animator.SetBool("Cutscene 1", false);
+        Destroy(gameObject);
     }
 }

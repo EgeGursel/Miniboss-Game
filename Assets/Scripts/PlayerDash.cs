@@ -51,6 +51,7 @@ public class PlayerDash : MonoBehaviour
     {
         if (dashCD)
         {
+            AudioManager.instance.Play("dash");
             StartCoroutine(Dash(direction));
             StartCoroutine(DashCooldown());
         }

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class Lore : MonoBehaviour
 {
-    public SceneLoader sceneLoader;
     public string[] strings;
     private Queue<string> sentences;
     private Text text;
@@ -14,6 +13,7 @@ public class Lore : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        AudioManager.instance.Play("theme");
         text = GetComponent<Text>();
         sentences = new Queue<string>();
         StartDialogue();
@@ -50,6 +50,6 @@ public class Lore : MonoBehaviour
     }
     void EndDialogue()
     {
-        sceneLoader.LoadNextScene();
+        SceneLoader.instance.LoadNextScene();
     }
 }

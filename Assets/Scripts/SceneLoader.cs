@@ -6,7 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     public Animator transition;
+    public static SceneLoader instance;
     public float transitionTime;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     public void Load(string sceneName)
     {
         StartCoroutine(LoaderByName(sceneName));

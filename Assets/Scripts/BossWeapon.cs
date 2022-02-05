@@ -37,12 +37,11 @@ public class BossWeapon : MonoBehaviour
 		}
 	}
 
-	void OnDrawGizmosSelected()
-	{
-		Vector3 pos = transform.position;
-		pos += transform.right * attackOffset.x;
-		pos += transform.up * attackOffset.y;
-
-		Gizmos.DrawWireSphere(pos, attackRange);
-	}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+			collision.gameObject.GetComponent<Player>().TakeDamage(enragedAttackDamage);
+		}
+    }
 }

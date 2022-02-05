@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - SoulCounter
   - DBox
+  - InfoBar
   layers:
   - Default
   - TransparentFX

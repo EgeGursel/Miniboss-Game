@@ -5201,8 +5201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hurtPS: {fileID: 7660694112356785380, guid: e5e0317e4ebc53045a1a781dd4909486, type: 3}
-  sceneLoader: {fileID: 8589229918234507974, guid: 20fff373043092340adf9c19c7830707, type: 3}
-  dust: {fileID: 7527583854714432222}
   playerAnimator: {fileID: 7527583855348200416}
   uIUpgrades: {fileID: 6730253382374473245, guid: a449908b39e667746a924458aaee026c, type: 3}
   maxHealth: 100
@@ -5242,7 +5240,7 @@ MonoBehaviour:
     m_Bits: 128
   attackCooldown: 0.4
   attackArea: {fileID: 2561272835462112214}
-  attackRange: 0.69
+  attackRange: 0.77
   attackDamage: 15
   meleeAnimator: {fileID: 7527583855663428600}
   bow: {fileID: 1687901671562860412}
@@ -5265,8 +5263,7 @@ MonoBehaviour:
   levelCoinCount: 0
   shopOneSymbol: {fileID: 0}
   shopTwoSymbol: {fileID: 0}
-  infoBar: {fileID: 4533211935270345219, guid: 7a9614c27291c214383dce9057c2d9bd, type: 3}
-  boss: {fileID: 0}
+  hasKey: 0
 --- !u!114 &7527583855348200438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5279,6 +5276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 146490020fc46684dade60740abaa00a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dustPS: {fileID: 7527583854714432222}
   m_JumpForce: 465
   m_CrouchSpeed: 0.36
   m_MovementSmoothing: 0

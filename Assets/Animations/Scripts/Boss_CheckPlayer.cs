@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Boss_CheckPlayer : StateMachineBehaviour
 {
+    public float attackSpeed;
     public float distance = 1.9f;
     private float distanceToPlayer;
     private Transform player;
@@ -11,6 +12,7 @@ public class Boss_CheckPlayer : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        animator.SetFloat("attackSpeed", attackSpeed);
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
     }
