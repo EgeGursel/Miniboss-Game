@@ -66,7 +66,7 @@ public class PlayerPickUp : MonoBehaviour
             }
             else if (collectableName.StartsWith("Health"))
             {
-                player.Heal(25);
+                player.Heal(35);
                 return;
             }
 

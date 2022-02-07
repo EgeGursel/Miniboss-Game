@@ -9,6 +9,7 @@ public class EndingManager : MonoBehaviour
     private PlayerAttack playerAttack;
     public ParticleSystem explosionPS;
     public static EndingManager instance;
+    public DialogueTrigger dialogueTrigger;
 
     private void Awake()
     {
@@ -18,11 +19,6 @@ public class EndingManager : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
         playerAttack = player.GetComponent<PlayerAttack>();
-
-        // DELETE THESE BEFORE FINALIZING
-        PlayerPrefs.SetInt("Bow", 1);
-        PlayerPrefs.SetInt("Katana", 0);
-        playerAttack.CheckWeapons();
     }
     public void BossDead()
     {
@@ -31,5 +27,11 @@ public class EndingManager : MonoBehaviour
         PlayerPrefs.SetInt("Bow", 0);
         playerAttack.CheckWeapons();
         AudioManager.instance.Stop("theme");
+        StartCoroutine(Wait());
+    }
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(1);
+        dialogueTrigger.StartDialogue();
     }
 }

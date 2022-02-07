@@ -224,7 +224,6 @@ GameObject:
   m_Component:
   - component: {fileID: 347189704}
   - component: {fileID: 347189706}
-  - component: {fileID: 347189707}
   - component: {fileID: 347189705}
   m_Layer: 0
   m_Name: TriggerCollider
@@ -286,25 +285,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activateObject: {fileID: 924114827}
---- !u!95 &347189707
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 347189703}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4eee476e4db374d4cafadcb4325774ec, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &439417021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -539,6 +519,7 @@ GameObject:
   m_Component:
   - component: {fileID: 681225043}
   - component: {fileID: 681225042}
+  - component: {fileID: 681225044}
   m_Layer: 0
   m_Name: CM StateDrivenCamera1
   m_TagString: Cutscene
@@ -566,7 +547,7 @@ MonoBehaviour:
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
-  m_AnimatedTarget: {fileID: 347189707}
+  m_AnimatedTarget: {fileID: 681225044}
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
@@ -614,6 +595,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &681225044
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681225041}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4eee476e4db374d4cafadcb4325774ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &692600662 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2556613350413142938, guid: 86f49649e564ee3478ba0053721ac86c, type: 3}

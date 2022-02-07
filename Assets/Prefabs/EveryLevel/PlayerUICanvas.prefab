@@ -439,6 +439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   souls: {fileID: 3750823311469183335}
+  buyButton: {fileID: 6650038763591110356}
 --- !u!1 &263803298086263376
 GameObject:
   m_ObjectHideFlags: 0
@@ -2288,7 +2289,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 28, y: 0}
+  m_AnchoredPosition: {x: 33, y: 0}
   m_SizeDelta: {x: 53.9045, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3646080005731143958
@@ -2332,7 +2333,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: text
 --- !u!1 &3646080005770477267
 GameObject:
   m_ObjectHideFlags: 0

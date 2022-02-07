@@ -27227,10 +27227,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1212786016}
     - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
-      propertyPath: hurtPS
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7527583855348200437, guid: c238404f26b528c4fab9586d771f98fb, type: 3}
       propertyPath: healthbar
       value: 
       objectReference: {fileID: 1380011505}

@@ -43,6 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89cb7e61c94234a4da036b820eff5619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  volumeStart: 0
   sounds:
   - clip: {fileID: 8300000, guid: aa1f39b9396d8b34dbae35603bfdb57b, type: 3}
     name: jump
@@ -124,7 +125,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: a93a80b52f99c914897e9e687d82e758, type: 3}
     name: theme
-    volume: 0.1
+    volume: 0.18
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -132,7 +133,7 @@ MonoBehaviour:
     name: love
     volume: 1
     pitch: 1
-    loop: 1
+    loop: 0
     source: {fileID: 0}
   - clip: {fileID: 8300000, guid: ed1273d88649f5e459e3405c6e2aa993, type: 3}
     name: dooropen

@@ -60,9 +60,11 @@ public class DialogueManager : MonoBehaviour
 		}
 		AudioManager.instance.Stop("talking");
 		continueButton.gameObject.SetActive(true);
+		continueButton.interactable = true;
 	}
 	void EndDialogue()
 	{
+		continueButton.interactable = false;
 		isOpen = false;
 		animator.SetBool("IsOpen", false);
 

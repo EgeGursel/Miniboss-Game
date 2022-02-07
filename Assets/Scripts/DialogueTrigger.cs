@@ -19,4 +19,8 @@ public class DialogueTrigger : MonoBehaviour
             dialogueStarted = true;
         }
     }
+    public void StartDialogue()
+    {
+        TriggerDialogue();
+    }
 }

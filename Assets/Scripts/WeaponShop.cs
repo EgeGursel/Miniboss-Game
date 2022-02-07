@@ -7,11 +7,12 @@ public class WeaponShop : MonoBehaviour
 {
     public Souls souls;
     PlayerAttack playerAttack;
-    private Button[] shopButtons;
+    public Button buyButton;
+
     private void Start()
     {
+        PlayerPrefs.SetInt("SoulsFragments", 30);
         playerAttack = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttack>();
-        shopButtons = GetComponentsInChildren<Button>();
     }
     public void BuyBow()
     {
@@ -23,19 +24,13 @@ public class WeaponShop : MonoBehaviour
     }
     public void CheckAvailability()
     {
-        foreach (Button button in GetComponentsInChildren<Button>())
+        if (PlayerPrefs.GetInt("SoulsFragments") < int.Parse(buyButton.GetComponentInChildren<Text>().text))
         {
-            if (button.name != "CloseButton")
-            {
-                if (PlayerPrefs.GetInt("SoulsFragments") < int.Parse(button.GetComponentInChildren<Text>().text))
-                {
-                    button.interactable = false;
-                }
-                else
-                {
-                    button.interactable = true;
-                }
-            } 
+            buyButton.interactable = false;
+        }
+        else
+        {
+            buyButton.interactable = true;
         }
     }
     private void OnEnable()
