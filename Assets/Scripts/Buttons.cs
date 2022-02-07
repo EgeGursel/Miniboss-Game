@@ -32,6 +32,21 @@ public class Buttons : MonoBehaviour
             SceneLoader.instance.LoadNextScene();
         }
     }
+
+    public void RespawnMusic()
+    {
+        try
+        {
+            SceneLoader.instance.Load(PlayerPrefs.GetString("Scene"));
+
+            // FIX
+            // AudioManager.instance.Play("theme");
+        }
+        catch
+        {
+            SceneLoader.instance.LoadNextScene();
+        }
+    }
     public void ResetGame()
     {
         PlayerPrefs.DeleteAll();
