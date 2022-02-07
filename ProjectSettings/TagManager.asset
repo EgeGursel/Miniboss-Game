@@ -13,6 +13,7 @@ TagManager:
   - SoulCounter
   - DBox
   - InfoBar
+  - Cutscene
   layers:
   - Default
   - TransparentFX

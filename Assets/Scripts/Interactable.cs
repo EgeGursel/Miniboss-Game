@@ -31,7 +31,7 @@ public class Interactable : MonoBehaviour
             {
                 if (playerItems.hasKey == true)
                 {
-                    // PLAY DOOR OPEN SOUND
+                    AudioManager.instance.Play("dooropen");
                     gameObject.SetActive(false);
                 }
                 else

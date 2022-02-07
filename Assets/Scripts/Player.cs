@@ -146,6 +146,7 @@ public class Player : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Level 2")
         {
             PlayerPrefs.SetInt("DashActive", 0);
+            PlayerPrefs.SetInt("Katana", 0);
         }
         SceneLoader.instance.Load("DeathScene");
         gameObject.SetActive(false);

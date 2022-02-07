@@ -6,7 +6,7 @@ public class EndingManager : MonoBehaviour
 {
     public Transform boss;
     private GameObject player;
-    private PlayerPickUp playerPickUp;
+    private PlayerAttack playerAttack;
     public ParticleSystem explosionPS;
     public static EndingManager instance;
 
@@ -16,17 +16,20 @@ public class EndingManager : MonoBehaviour
     }
     void Start()
     {
-        PlayerPrefs.SetInt("Bow", 1);
         player = GameObject.FindGameObjectWithTag("Player").gameObject;
-        playerPickUp = player.GetComponent<PlayerPickUp>();
+        playerAttack = player.GetComponent<PlayerAttack>();
+
+        // DELETE THESE BEFORE FINALIZING
+        PlayerPrefs.SetInt("Bow", 1);
+        PlayerPrefs.SetInt("Katana", 0);
+        playerAttack.CheckWeapons();
     }
     public void BossDead()
     {
         Instantiate(explosionPS, boss.position, boss.rotation);
+        PlayerPrefs.SetInt("Katana", 0);
+        PlayerPrefs.SetInt("Bow", 0);
+        playerAttack.CheckWeapons();
         AudioManager.instance.Stop("theme");
-    }
-    public void GameEnd()
-    {
-
     }
 }

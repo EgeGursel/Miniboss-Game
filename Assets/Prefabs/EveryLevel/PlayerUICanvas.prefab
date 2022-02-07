@@ -3234,7 +3234,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TROLLGUS
+  m_text: impostor
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}
   m_sharedMaterial: {fileID: -3899907182789827394, guid: 804a8632a8a59d248bedc8d84d145b53, type: 2}
@@ -5613,6 +5613,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb3fbe31854e47b40967f105e6731c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOpen: 0
 --- !u!1 &7259427929201001762
 GameObject:
   m_ObjectHideFlags: 0

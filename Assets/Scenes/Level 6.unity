@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 681225042}
   m_Layer: 0
   m_Name: CM StateDrivenCamera1
-  m_TagString: Untagged
+  m_TagString: Cutscene
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -595,6 +595,8 @@ MonoBehaviour:
   - m_Hash: 1118231599
     m_ParentHash: 756556552
   - m_Hash: 662242267
+    m_ParentHash: 756556552
+  - m_Hash: 1109084637
     m_ParentHash: 756556552
 --- !u!4 &681225043
 Transform:

@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    public float volumeStart;
     public Sound[] sounds;
     public static AudioManager instance;
     void Awake()
@@ -17,6 +18,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(gameObject);
+
+        volumeStart = PlayerPrefs.GetFloat("volume");
 
         foreach (Sound s in sounds)
         {
@@ -40,5 +43,9 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         s.source.Stop();
+    }
+    public void ChangeVolume(float volume)
+    {
+
     }
 }

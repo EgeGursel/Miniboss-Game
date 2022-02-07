@@ -54,6 +54,11 @@ public class PlayerAttack : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
             transform.GetChild(1).gameObject.SetActive(true);
         }
+        else
+        {
+            transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(1).gameObject.SetActive(false);
+        }
     }
     IEnumerator AttackCooldown()
     {
