@@ -50,6 +50,7 @@ public class Lore : MonoBehaviour
     }
     void EndDialogue()
     {
+        AudioManager.instance.Stop("theme");
         SceneLoader.instance.LoadNextScene();
     }
 }

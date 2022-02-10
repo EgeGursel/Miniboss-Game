@@ -38,9 +38,7 @@ public class Buttons : MonoBehaviour
         try
         {
             SceneLoader.instance.Load(PlayerPrefs.GetString("Scene"));
-
-            // FIX
-            // AudioManager.instance.Play("theme");
+            PlayerPrefs.SetInt("PlayTheme", 1);
         }
         catch
         {

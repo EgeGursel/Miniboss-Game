@@ -51,6 +51,12 @@ public class Player : MonoBehaviour
         {
             transform.GetChild(1).gameObject.SetActive(true);
         }
+
+        if (PlayerPrefs.GetInt("PlayTheme") == 1)
+        {
+            AudioManager.instance.Play("theme");
+            PlayerPrefs.SetInt("PlayTheme", 0);
+        }
     }
     private void Update()
     {

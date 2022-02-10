@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GameStart : MonoBehaviour
 {
-    void Start()
+    void Awake()
     {
-        AudioManager.instance.Play("theme");
+        PlayerPrefs.SetInt("PlayTheme", 1);
     }
 }
